@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>preview</LangVersion>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="MediatR" Version="10.0.1" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Dayconnect.Fidelity.Domain\Dayconnect.Fidelity.Domain.csproj" />
+	</ItemGroup>
+	
+</Project>
