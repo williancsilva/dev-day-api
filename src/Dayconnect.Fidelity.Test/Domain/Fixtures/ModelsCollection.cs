@@ -68,24 +68,14 @@ public class ModelFixture
 
     private static Cliente GerarClienteValido()
     {
-        var faker = new Faker<Cliente>("pt_BR").CustomInstantiator(f =>
-        {
-            var cliente = new Cliente(f.Person.FullName, f.Person.Cpf());
-            cliente.SetAtivo(true);
-            return cliente;
-        });
+        var faker = new Faker<Cliente>("pt_BR").CustomInstantiator(f => new Cliente(f.Person.FullName, f.Person.Cpf(), true));
 
         return faker.Generate(1).First();
     }
 
     private static IEnumerable<Cliente> GerarListaClienteValido()
     {
-        var faker = new Faker<Cliente>("pt_BR").CustomInstantiator(f =>
-        {
-            var cliente = new Cliente(f.Person.FullName, f.Person.Cpf());
-            cliente.SetAtivo(true);
-            return cliente;
-        });
+        var faker = new Faker<Cliente>("pt_BR").CustomInstantiator(f => new Cliente(f.Person.FullName, f.Person.Cpf(), true));
 
         return faker.Generate(10);
     }
