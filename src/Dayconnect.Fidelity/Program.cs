@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
-ConfigurationManager configuration = builder.Configuration;
+var configuration = builder.Configuration;
 
 var origins = configuration.GetSection("Origins").GetChildren().Select(x => x.Value).ToArray();
 var endPointAccessControl = configuration["EndPointAccessControl"];
@@ -31,10 +31,7 @@ builder.Services.IntegrateAcessControl(endPointAccessControl);
 
 builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthenticationHandler", null);
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Operar",  policy => policy.RequireClaim("Operadores", new string[] { "consultar", "bloquear" }));
-});
+builder.Services.AddAuthorization(options => { options.AddPolicy("Operar", policy => policy.RequireClaim("Operadores", new string[] {"consultar", "bloquear"})); });
 
 builder.Services.AddMvcCore(options => options.Filters.Add<NotificationFilter>());
 builder.Services.AddMvcCore(options => options.Filters.Add<LogFilter>());
@@ -53,7 +50,7 @@ if (!app.Environment.IsDevelopment())
     {
         exceptionHandlerApp.Run(async context =>
         {
-            if(context.Response.StatusCode == StatusCodes.Status500InternalServerError)
+            if (context.Response.StatusCode == StatusCodes.Status500InternalServerError)
             {
                 var ex = context.Features.Get<IExceptionHandlerFeature>();
                 if (ex != null && enabledLog)
@@ -62,12 +59,12 @@ if (!app.Environment.IsDevelopment())
                 context.Response.ContentType = Text.Plain;
 
                 await context.Response.WriteAsync("Estamos enfrentando problema. Tente novamente mais tarde ou procure o administrador do sistema.");
-            }            
+            }
         });
     });
 }
 
-app.Use((context, next) => 
+app.Use((context, next) =>
 {
     context.Request.EnableBuffering();
     return next();
@@ -87,11 +84,7 @@ if (!app.Environment.IsProduction())
 {
     app.UseSwagger();
 
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("v1/swagger.json", "Daycoval Fidelity - Cliente Api - V1");
-    });
-
+    app.UseSwaggerUI(c => { c.SwaggerEndpoint("v1/swagger.json", "Daycoval Fidelity - Cliente Api - V1"); });
 }
 
 app.MapControllers();
