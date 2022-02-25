@@ -15,9 +15,12 @@ namespace Dayconnect.Fidelity.Repository
         {
             var parametros = new List<SqlParameter>
             {
-                new SqlParameter("@cpfCnpj", SqlDbType.Int){Value = cpfCnpj}
+                new ("@CpfCnpjCliente", SqlDbType.VarChar){Value = cpfCnpj}
             };
-            var execute = new CreateExecuteAdo().WithParameters(parametros).WithProcedure("fidelity.P_OBTER_CLIENTE");
+            
+            var execute = new CreateExecuteAdo()
+                .WithParameters(parametros)
+                .WithProcedure("fidelity.P_OBTER_CLIENTE");
 
             return await ExecuteListAsync(execute, ClienteMapper.Convert);
         }
@@ -26,9 +29,12 @@ namespace Dayconnect.Fidelity.Repository
         {
             var parametros = new List<SqlParameter>
             {
-                new SqlParameter("@cpfCnpj", SqlDbType.Int){Value = cpfCnpj}
+                new ("@CpfCnpjCliente", SqlDbType.VarChar){Value = cpfCnpj}
             };
-            var execute = new CreateExecuteAdo().WithParameters(parametros).WithProcedure("fidelity.P_INATIVAR_CLIENTE");
+            
+            var execute = new CreateExecuteAdo()
+                .WithParameters(parametros)
+                .WithProcedure("fidelity.P_INATIVAR_CLIENTE");
 
             await ExecuteNonQueryAsync(execute);
         }

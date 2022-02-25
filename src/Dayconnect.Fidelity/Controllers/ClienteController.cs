@@ -15,12 +15,10 @@ namespace Dayconnect.Fidelity.Controllers
     public class ClienteController : ControllerBase
     {
         private readonly IClienteApp _app;
-        private readonly ILogger<ClienteController> _logger;
 
-        public ClienteController(IClienteApp app, ILogger<ClienteController> logger)
+        public ClienteController(IClienteApp app)
         {
             _app = app;
-            _logger = logger;
         }
 
         [HttpPost]

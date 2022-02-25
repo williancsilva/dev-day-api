@@ -4,23 +4,25 @@ using Dayconnect.Fidelity.App.Dto.Result;
 using Dayconnect.Fidelity.App.Dto.Signature;
 using Dayconnect.Fidelity.App.Interfaces;
 using Dayconnect.Fidelity.App.Notifications;
-using Dayconnect.Fidelity.Domain.Interfaces.Service;
+using Dayconnect.Fidelity.Domain.Interfaces.Repository;
 
 namespace Dayconnect.Fidelity.App
 {
     public class ClienteApp : ApplicationBase, IClienteApp
     {
-        private readonly IClienteService _service;
-        public ClienteApp(NotificationContext notificationContext, IClienteService service) : base(notificationContext)
+        private readonly IClienteRepository _repository;
+        
+        public ClienteApp(NotificationContext notificationContext, IClienteRepository repository) : base(notificationContext)
         {
-            _service = service;
+            _repository = repository;
         }
+        
         public async Task InativarCliente(InativarClienteSignature signature)
         {
             if (!DtoValido(signature))
                 return;
 
-            await _service.InativarCliente(signature.CpfCnpj);
+            await _repository.InativarCliente(signature.CpfCnpj);
         }
 
         public async Task<IEnumerable<ObterDadosClienteResult>> ObterDadosCliente(ObterDadosClienteSignature signature)
@@ -28,7 +30,7 @@ namespace Dayconnect.Fidelity.App
             if (!DtoValido(signature))
                 return null;
 
-            var result = await _service.ObterDadosCliente(signature.CpfCnpj);
+            var result = await _repository.ObterDadosCliente(signature.CpfCnpj);
 
             return result.Convert();
         }
