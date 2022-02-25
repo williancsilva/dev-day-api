@@ -2,13 +2,12 @@
 using Dayconnect.Fidelity.App.Validators.CustomValidator;
 using FluentValidation;
 
-namespace Dayconnect.Fidelity.App.Validators
+namespace Dayconnect.Fidelity.App.Validators;
+
+public class InativarClienteValidator : AbstractValidator<InativarClienteSignature>
 {
-    public class InativarClienteValidator : AbstractValidator<InativarClienteSignature>
+    public InativarClienteValidator()
     {
-        public InativarClienteValidator()
-        {
-            RuleFor(x => x.CpfCnpj).Must(DocumentoValidator.ValidarDocumento).WithMessage("Documento Inválido");
-        }
+        RuleFor(x => x.CpfCnpj).Must(DocumentoValidator.ValidarDocumento).WithMessage("Documento Inválido");
     }
 }

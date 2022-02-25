@@ -1,7 +1,6 @@
-﻿namespace Dayconnect.Fidelity.App.Dto
+﻿namespace Dayconnect.Fidelity.App.Dto;
+
+public interface IDtoContract
 {
-    public interface IDtoContract
-    {
-        void ValidarDto();
-    }
+    void ValidarDto();
 }

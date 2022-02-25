@@ -6,33 +6,32 @@ using Dayconnect.Fidelity.App.Interfaces;
 using Dayconnect.Fidelity.App.Notifications;
 using Dayconnect.Fidelity.Domain.Interfaces.Repository;
 
-namespace Dayconnect.Fidelity.App
+namespace Dayconnect.Fidelity.App;
+
+public class ClienteApp : ApplicationBase, IClienteApp
 {
-    public class ClienteApp : ApplicationBase, IClienteApp
+    private readonly IClienteRepository _repository;
+
+    public ClienteApp(NotificationContext notificationContext, IClienteRepository repository) : base(notificationContext)
     {
-        private readonly IClienteRepository _repository;
-        
-        public ClienteApp(NotificationContext notificationContext, IClienteRepository repository) : base(notificationContext)
-        {
-            _repository = repository;
-        }
-        
-        public async Task InativarCliente(InativarClienteSignature signature)
-        {
-            if (!DtoValido(signature))
-                return;
+        _repository = repository;
+    }
 
-            await _repository.InativarCliente(signature.CpfCnpj);
-        }
+    public async Task InativarCliente(InativarClienteSignature signature)
+    {
+        if (!DtoValido(signature))
+            return;
 
-        public async Task<IEnumerable<ObterDadosClienteResult>> ObterDadosCliente(ObterDadosClienteSignature signature)
-        {
-            if (!DtoValido(signature))
-                return null;
+        await _repository.InativarCliente(signature.CpfCnpj);
+    }
 
-            var result = await _repository.ObterDadosCliente(signature.CpfCnpj);
+    public async Task<IEnumerable<ObterDadosClienteResult>> ObterDadosCliente(ObterDadosClienteSignature signature)
+    {
+        if (!DtoValido(signature))
+            return null;
 
-            return result.Convert();
-        }
+        var result = await _repository.ObterDadosCliente(signature.CpfCnpj);
+
+        return result.Convert();
     }
 }
