@@ -1,6 +1,5 @@
 ﻿using Dayconnect.Fidelity.App;
 using Dayconnect.Fidelity.App.Notifications;
-using Dayconnect.Fidelity.Domain.Interfaces.Service;
 using Dayconnect.Fidelity.Test.App.Fixtures;
 using Dayconnect.Fidelity.Test.Domain.Fixtures;
 using Moq;
@@ -14,13 +13,6 @@ namespace Dayconnect.Fidelity.Test.App;
 [Collection(nameof(DtoCollection))]
 public class ClienteAppTest
 {
-    private readonly DtoFixture _dtoFixture;
-
-    public ClienteAppTest(DtoFixture dtoFixture)
-    {
-        _dtoFixture = dtoFixture;
-    }
-
     [Fact(DisplayName = "Deve inativar um cliente")]
     public async Task DeveInativarCliente()
     {
@@ -42,10 +34,9 @@ public class ClienteAppTest
     public async Task DeveObterDadosCliente()
     {
         var mocker = new AutoMocker();
-        var model = new ModelFixture();
         var repository = mocker.GetMock<IClienteRepository>();
         var notificacao = mocker.GetMock<NotificationContext>();
-        var result = model.ListaCliente;
+        var result = ModelFixture.ListaCliente;
         var signature = DtoFixture.ObterDadosCliente;
 
         repository.Setup(x => x.ObterDadosCliente(signature.CpfCnpj)).ReturnsAsync(result);

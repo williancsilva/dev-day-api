@@ -7,35 +7,30 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace Dayconnect.Fidelity.Test.Domain.Models
+namespace Dayconnect.Fidelity.Test.Domain.Models;
+
+[Collection(nameof(ModelsCollection))]
+public class SessaoSignatureTest
 {
-    [Collection(nameof(ModelsCollection))]
-    public class SessaoSignatureTest
+    [Fact]
+    public void DeveCriarSessaoSignatureValido()
     {
-        private readonly ModelFixture _modelFixture;
-        public SessaoSignatureTest(ModelFixture modelFixture)
-        {
-            _modelFixture = modelFixture;
-        }
-        [Fact]
-        public void DeveCriarSessaoSignatureValido()
-        {
-            var session = _modelFixture.Sessao;
+        var session = ModelFixture.Sessao;
 
-            Assert.True(session.IsValid);
-        }
-        [Theory]
-        [InlineData("")]
-        [InlineData(null)]
-        public void DeveGerarUmErroAoCriarSessaoSignature(string param)
-        {
-            var facker = new Faker<SessaoSignature>("pt_BR").CustomInstantiator(f =>
-            {
-                var session = new SessaoSignature(param);
-                return session;
-            });
+        Assert.True(session.IsValid);
+    }
 
-            Assert.Throws<ArgumentNullException>(() => facker.Generate(1).First());
-        }
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    public void DeveGerarUmErroAoCriarSessaoSignature(string param)
+    {
+        var faker = new Faker<SessaoSignature>("pt_BR").CustomInstantiator(f =>
+        {
+            var session = new SessaoSignature(param);
+            return session;
+        });
+
+        Assert.Throws<ArgumentNullException>(() => faker.Generate(1).First());
     }
 }

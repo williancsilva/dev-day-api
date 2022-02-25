@@ -4,56 +4,50 @@ using System.Linq;
 using Xunit;
 using Bogus.Extensions.Brazil;
 
-namespace Dayconnect.Fidelity.Test.App.Fixtures
+namespace Dayconnect.Fidelity.Test.App.Fixtures;
+
+[CollectionDefinition(nameof(DtoCollection))]
+public class DtoCollection : ICollectionFixture<DtoFixture>
 {
-    [CollectionDefinition(nameof(DtoCollection))]
-    public class DtoCollection : ICollectionFixture<DtoFixture>
+}
+
+public class DtoFixture
+{
+    public static ObterDadosClienteSignature ObterDadosCliente => GerarObterDadosClienteSignature();
+    public static InativarClienteSignature InativarCliente => GerarInativarClienteSignature();
+    public static LoginSignature EfetuarLogin => GerarLoginSignature();
+
+    private static LoginSignature GerarLoginSignature()
     {
+        var faker = new Faker<LoginSignature>("pt_BR").CustomInstantiator(f => new LoginSignature
+        {
+            Ip = f.Internet.Ip(),
+            Login = f.Internet.Email(),
+            Password = f.Internet.Password(),
+            DeviceId = f.Random.Words(),
+            VersaoDispositivo = f.Random.Number(1, 100).ToString()
+        });
+
+        return faker.Generate(1).First();
     }
-    public class DtoFixture
+
+    private static ObterDadosClienteSignature GerarObterDadosClienteSignature()
     {
-        public ObterDadosClienteSignature ObterDadosCliente { get { return GerarObterDadosClienteSignature(); } }
-        public InativarClienteSignature InativarCliente { get { return GerarInativarClienteSignature(); } }
-        public LoginSignature EfetuarLogin { get { return GerarLoginSignature(); } }
-        private LoginSignature GerarLoginSignature()
+        var faker = new Faker<ObterDadosClienteSignature>("pt_BR").CustomInstantiator(f => new ObterDadosClienteSignature
         {
-            var faker = new Faker<LoginSignature>("pt_BR").CustomInstantiator(f =>
-            {
-                return new LoginSignature()
-                {
-                    Ip = f.Internet.Ip(),
-                    Login = f.Internet.Email(),
-                    Password = f.Internet.Password(),
-                    DeviceId = f.Random.Words(),
-                    VersaoDispositivo = f.Random.Number(1,100).ToString()
-                };
-            });
+            CpfCnpj = f.Person.Cpf()
+        });
 
-            return faker.Generate(1).First();
-        }
-        private ObterDadosClienteSignature GerarObterDadosClienteSignature()
+        return faker.Generate(1).First();
+    }
+
+    private static InativarClienteSignature GerarInativarClienteSignature()
+    {
+        var faker = new Faker<InativarClienteSignature>("pt_BR").CustomInstantiator(f => new InativarClienteSignature
         {
-            var faker = new Faker<ObterDadosClienteSignature>("pt_BR").CustomInstantiator(f =>
-            {
-                return new ObterDadosClienteSignature()
-                {
-                    CpfCnpj = f.Person.Cpf()
-                };
-            });
+            CpfCnpj = f.Person.Cpf()
+        });
 
-            return faker.Generate(1).First();
-        }
-        private InativarClienteSignature GerarInativarClienteSignature()
-        {
-            var faker = new Faker<InativarClienteSignature>("pt_BR").CustomInstantiator(f =>
-            {
-                return new InativarClienteSignature()
-                {
-                    CpfCnpj = f.Person.Cpf()
-                };
-            });
-
-            return faker.Generate(1).First();
-        }
+        return faker.Generate(1).First();
     }
 }

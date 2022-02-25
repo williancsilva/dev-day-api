@@ -6,48 +6,42 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace Dayconnect.Fidelity.Test.Domain.Models
+namespace Dayconnect.Fidelity.Test.Domain.Models;
+
+[Collection(nameof(ModelsCollection))]
+public class ClienteTest
 {
-    [Collection(nameof(ModelsCollection))]
-    public class ClienteTest
+    [Fact]
+    public void DeveCriarClienteValido()
     {
-        private readonly ModelFixture _modelFixture;
-        public ClienteTest(ModelFixture modelFixture)
-        {
-            _modelFixture = modelFixture;
-        }
-        [Fact]
-        public void DeveCriarClienteValido()
-        {
-            var cliente = _modelFixture.Cliente;
+        Assert.True(ModelFixture.Cliente.IsValid);
+    }
 
-            Assert.True(cliente.IsValid);
-        }
-        [Theory]
-        [InlineData("")]
-        [InlineData(null)]
-        public void DeveGerarUmErroAoCriarUmClienteSemNome(string param)
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    public void DeveGerarUmErroAoCriarUmClienteSemNome(string param)
+    {
+        var faker = new Faker<Cliente>("pt_BR").CustomInstantiator(f =>
         {
-            var facker = new Faker<Cliente>("pt_BR").CustomInstantiator(f =>
-            {
-                var cliente = new Cliente(param, f.Person.Cpf());
-                return cliente;
-            });
+            var cliente = new Cliente(param, f.Person.Cpf());
+            return cliente;
+        });
 
-            Assert.Throws<ArgumentNullException>(() => facker.Generate(1).First());
-        }
-        [Theory]
-        [InlineData("")]
-        [InlineData(null)]
-        public void DeveGerarUmErroAoCriarUmClienteSemDocumento(string param)
+        Assert.Throws<ArgumentNullException>(() => faker.Generate(1).First());
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    public void DeveGerarUmErroAoCriarUmClienteSemDocumento(string param)
+    {
+        var faker = new Faker<Cliente>("pt_BR").CustomInstantiator(f =>
         {
-            var facker = new Faker<Cliente>("pt_BR").CustomInstantiator(f =>
-            {
-                var cliente = new Cliente(f.Person.FullName, param);
-                return cliente;
-            });
+            var cliente = new Cliente(f.Person.FullName, param);
+            return cliente;
+        });
 
-            Assert.Throws<ArgumentNullException>(() => facker.Generate(1).First());
-        }
+        Assert.Throws<ArgumentNullException>(() => faker.Generate(1).First());
     }
 }

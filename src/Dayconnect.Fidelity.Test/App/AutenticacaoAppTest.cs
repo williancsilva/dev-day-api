@@ -1,5 +1,4 @@
-﻿using Bogus;
-using Dayconnect.Fidelity.App;
+﻿using Dayconnect.Fidelity.App;
 using Dayconnect.Fidelity.App.Notifications;
 using Dayconnect.Fidelity.Domain.Interfaces.Service;
 using Dayconnect.Fidelity.Test.App.Fixtures;
@@ -9,138 +8,127 @@ using Moq.AutoMock;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Dayconnect.Fidelity.Test.App
+namespace Dayconnect.Fidelity.Test.App;
+
+[Collection(nameof(DtoCollection))]
+public class AutenticacaoAppTest
 {
-    [Collection(nameof(DtoCollection))]
-    public class AutenticacaoAppTest
+    [Fact(DisplayName = "Deve Efetuar o Login com usuario e senha validos")]
+    public async Task DeveEfetuarLoginComUsuarioSenhaValidos()
     {
-        private readonly DtoFixture _dtoFixture;
-        private readonly Faker _faker;
-        public AutenticacaoAppTest(DtoFixture dtoFixture)
-        {
-            _dtoFixture = dtoFixture;
-            _faker = new Faker("pt_BR");
-        }
+        var mocker = new AutoMocker();
+        var service = mocker.GetMock<IAutenticacaoService>();
+        var notificacao = mocker.GetMock<NotificationContext>();
+        var result = ModelFixture.Login;
+        var signature = DtoFixture.EfetuarLogin;
 
-        [Fact(DisplayName = "Deve Efetuar o Login com usuario e senha validos")]
-        public async Task DeveEfetuarLoginComUsuarioSenhaValidos()
-        {
-            var mocker = new AutoMocker();
-            var model = new ModelFixture();
+        service.Setup(x => x.Login(signature.Login, signature.Password, signature.Ip, signature.DeviceId, signature.VersaoDispositivo)).ReturnsAsync(result);
 
-            var service = mocker.GetMock<IAutenticacaoService>();
-            var notificacao = mocker.GetMock<NotificationContext>();
-            var result = model.Login;
-            var signature = _dtoFixture.EfetuarLogin;
+        var app = new AutenticacaoApp(notificacao.Object, service.Object);
 
-            service.Setup(x => x.Login(signature.Login, signature.Password, signature.Ip,signature.DeviceId,signature.VersaoDispositivo)).ReturnsAsync(result);
+        var atual = await app.Login(signature);
 
-            var app = new AutenticacaoApp(notificacao.Object, service.Object);
+        mocker.GetMock<IAutenticacaoService>().Verify(x => x.Login(signature.Login, signature.Password, signature.Ip, signature.DeviceId, signature.VersaoDispositivo), Times.Once);
 
-            var atual = await app.Login(signature);
+        Assert.True(atual.Logado);
+    }
 
-            mocker.GetMock<IAutenticacaoService>().Verify(x => x.Login(signature.Login, signature.Password, signature.Ip, signature.DeviceId, signature.VersaoDispositivo), Times.Once);
+    [Theory(DisplayName = "Deve Conter Uma Notificacao Para Login Invalido Ao Efetuar o Login.")]
+    [InlineData(null)]
+    [InlineData("")]
+    public async Task DeveConterUmaNotificacaoParaLoginInvalidoAoEfetuarLogin(string login)
+    {
+        var mocker = new AutoMocker();
+        var app = mocker.CreateInstance<AutenticacaoApp>();
+        var signature = DtoFixture.EfetuarLogin;
+        signature.Login = login;
 
-            Assert.True(atual.Logado);
-        }
+        await app.Login(signature);
 
+        Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Código Login Obrigatório"));
+    }
 
-        [Theory(DisplayName = "Deve Conter Uma Notificacao Para Login Invalido Ao Efetuar o Login.")]
-        [InlineData(null)]
-        [InlineData("")]
-        public async Task DeveConterUmaNotificacaoParaLoginInvalidoAoEfetuarLogin(string login)
-        {
-            var mocker = new AutoMocker();
-            var app = mocker.CreateInstance<AutenticacaoApp>();
-            var signature = _dtoFixture.EfetuarLogin;
-            signature.Login = login;
+    [Fact(DisplayName = "Deve Conter Uma Notificacao Para Login Maior Que Permitido Ao Efetuar o Login.")]
+    public async Task DeveConterUmaNotificacaoParaLoginMaiorQuePermitidoAoEfetuarLogin()
+    {
+        var mocker = new AutoMocker();
+        var app = mocker.CreateInstance<AutenticacaoApp>();
+        var signature = DtoFixture.EfetuarLogin;
+        signature.Login = "loremipsumdolorsitametconsecteturadipiscingelitProdsfasfhjyjindignissimegestasexEtiamquispujygjygjgjusnequeNammassaloremlobortisamaurisnullam@gmail.com";
 
-            await app.Login(signature);
+        await app.Login(signature);
 
-            Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Código Login Obrigatório"));
-        }
+        Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Código Login Inválido"));
+    }
 
-        [Fact(DisplayName = "Deve Conter Uma Notificacao Para Login Maior Que Permitido Ao Efetuar o Login.")]
-        public async Task DeveConterUmaNotificacaoParaLoginMaiorQuePermitidoAoEfetuarLogin()
-        {
-            var mocker = new AutoMocker();
-            var app = mocker.CreateInstance<AutenticacaoApp>();
-            var signature = _dtoFixture.EfetuarLogin;
-            signature.Login = "loremipsumdolorsitametconsecteturadipiscingelitProdsfasfhjyjindignissimegestasexEtiamquispujygjygjgjusnequeNammassaloremlobortisamaurisnullam@gmail.com";
+    [Fact(DisplayName = "Deve Conter Uma Notificacao Para Login Com Formato Invalido Ao Efetuar o Login.")]
+    public async Task DeveConterUmaNotificacaoParaLoginComFormatoInvalidoAoEfetuarLogin()
+    {
+        var mocker = new AutoMocker();
+        var app = mocker.CreateInstance<AutenticacaoApp>();
+        var signature = DtoFixture.EfetuarLogin;
+        signature.Login = "loremipsumdolorsitagmail.com";
 
-            await app.Login(signature);
+        await app.Login(signature);
 
-            Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Código Login Inválido"));
-        }
-        [Fact(DisplayName = "Deve Conter Uma Notificacao Para Login Com Formato Invalido Ao Efetuar o Login.")]
-        public async Task DeveConterUmaNotificacaoParaLoginComFormatoInvalidoAoEfetuarLogin()
-        {
-            var mocker = new AutoMocker();
-            var app = mocker.CreateInstance<AutenticacaoApp>();
-            var signature = _dtoFixture.EfetuarLogin;
-            signature.Login = "loremipsumdolorsitagmail.com";
+        Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Formato Invalido"));
+    }
 
-            await app.Login(signature);
+    [Theory(DisplayName = "Deve Conter Uma Notificacao Para Senha Obrigatoria Ao Efetuar o Login.")]
+    [InlineData(null)]
+    [InlineData("")]
+    public async Task DeveConterUmaNotificacaoParaSenhaObrigatoriaAoEfetuarLogin(string pass)
+    {
+        var mocker = new AutoMocker();
+        var app = mocker.CreateInstance<AutenticacaoApp>();
+        var signature = DtoFixture.EfetuarLogin;
+        signature.Password = pass;
 
-            Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Formato Invalido"));
-        }
-        
-        [Theory(DisplayName = "Deve Conter Uma Notificacao Para Senha Obrigatoria Ao Efetuar o Login.")]
-        [InlineData(null)]
-        [InlineData("")]
-        public async Task DeveConterUmaNotificacaoParaSenhaObrigatoriaAoEfetuarLogin(string pass)
-        {
-            var mocker = new AutoMocker();
-            var app = mocker.CreateInstance<AutenticacaoApp>();
-            var signature = _dtoFixture.EfetuarLogin;
-            signature.Password = pass;
+        await app.Login(signature);
 
-            await app.Login(signature);
+        Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Senha Obrigatória"));
+    }
 
-            Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Senha Obrigatória"));
-        }
+    [Fact(DisplayName = "Deve Conter Uma Notificacao Para Senha Com Tamanho Invalido Ao Efetuar o Login.")]
+    public async Task DeveConterUmaNotificacaoParaSenhaComTamanhoInvalidoAoEfetuarLogin()
+    {
+        var mocker = new AutoMocker();
+        var app = mocker.CreateInstance<AutenticacaoApp>();
+        var signature = DtoFixture.EfetuarLogin;
+        signature.Password = "teste12";
 
-        [Fact(DisplayName = "Deve Conter Uma Notificacao Para Senha Com Tamanho Invalido Ao Efetuar o Login.")]
-        public async Task DeveConterUmaNotificacaoParaSenhaComTamanhoInvalidoAoEfetuarLogin()
-        {
-            var mocker = new AutoMocker();
-            var app = mocker.CreateInstance<AutenticacaoApp>();
-            var signature = _dtoFixture.EfetuarLogin;
-            signature.Password = "teste12";
+        await app.Login(signature);
 
-            await app.Login(signature);
+        Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Formato Invalido"));
+    }
 
-            Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Formato Invalido"));
-        }
+    [Theory(DisplayName = "Deve Conter Uma Notificacao Para DeviceId Obrigatorio Ao Efetuar o Login.")]
+    [InlineData(null)]
+    [InlineData("")]
+    public async Task DeveConterUmaNotificacaoParaDeviceIdObrigatorioAoEfetuarLogin(string deviceId)
+    {
+        var mocker = new AutoMocker();
+        var app = mocker.CreateInstance<AutenticacaoApp>();
+        var signature = DtoFixture.EfetuarLogin;
+        signature.DeviceId = deviceId;
 
-        [Theory(DisplayName = "Deve Conter Uma Notificacao Para DeviceId Obrigatorio Ao Efetuar o Login.")]
-        [InlineData(null)]
-        [InlineData("")]
-        public async Task DeveConterUmaNotificacaoParaDeviceIdObrigatorioAoEfetuarLogin(string deviceId)
-        {
-            var mocker = new AutoMocker();
-            var app = mocker.CreateInstance<AutenticacaoApp>();
-            var signature = _dtoFixture.EfetuarLogin;
-            signature.DeviceId = deviceId;
+        await app.Login(signature);
 
-            await app.Login(signature);
+        Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("DeviceId Obrigatório"));
+    }
 
-            Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("DeviceId Obrigatório"));
-        }
+    [Theory(DisplayName = "Deve Conter Uma Notificacao Para Versao Dispositivo Obrigatorio Ao Efetuar o Login.")]
+    [InlineData(null)]
+    [InlineData("")]
+    public async Task DeveConterUmaNotificacaoParaVersaoDispositivoObrigatorioAoEfetuarLogin(string versaoDispositivo)
+    {
+        var mocker = new AutoMocker();
+        var app = mocker.CreateInstance<AutenticacaoApp>();
+        var signature = DtoFixture.EfetuarLogin;
+        signature.VersaoDispositivo = versaoDispositivo;
 
-        [Theory(DisplayName = "Deve Conter Uma Notificacao Para Versao Dispositivo Obrigatorio Ao Efetuar o Login.")]
-        [InlineData(null)]
-        [InlineData("")]
-        public async Task DeveConterUmaNotificacaoParaVersaoDispositivoObrigatorioAoEfetuarLogin(string versaoDispositivo)
-        {
-            var mocker = new AutoMocker();
-            var app = mocker.CreateInstance<AutenticacaoApp>();
-            var signature = _dtoFixture.EfetuarLogin;
-            signature.VersaoDispositivo = versaoDispositivo;
+        await app.Login(signature);
 
-            await app.Login(signature);
-
-            Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Versão Dispositivo Obrigatório"));
-        }
+        Assert.Contains(mocker.GetMock<NotificationContext>().Object.Notifications, x => x.Message.Equals("Versão Dispositivo Obrigatório"));
     }
 }
