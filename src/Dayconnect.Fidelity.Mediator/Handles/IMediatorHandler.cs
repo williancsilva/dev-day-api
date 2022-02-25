@@ -1,7 +1,6 @@
-﻿namespace Dayconnect.Fidelity.Mediator.Handles
+﻿namespace Dayconnect.Fidelity.Mediator.Handles;
+
+public interface IMediatorHandler
 {
-    public interface IMediatorHandler
-    {
-        Task PublicarEvento<T>(T evento);
-    }
+    Task PublicarEvento<T>(T evento);
 }
