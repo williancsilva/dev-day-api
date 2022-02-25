@@ -1,12 +1,9 @@
 ﻿using Dayconnect.Fidelity.Domain.Models;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
-namespace Dayconnect.Fidelity.Domain.Interfaces.Repository
+namespace Dayconnect.Fidelity.Domain.Interfaces.Repository;
+
+public interface IClienteRepository
 {
-    public interface IClienteRepository
-    {
-        Task<IEnumerable<Cliente>> ObterDadosCliente(string cpfCnpj);
-        Task InativarCliente(string cpfCnpj);
-    }
+    Task<IEnumerable<Cliente>> ObterDadosCliente(string cpfCnpj);
+    Task InativarCliente(string cpfCnpj);
 }

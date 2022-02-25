@@ -1,11 +1,8 @@
-﻿
+﻿using Dayconnect.Fidelity.Domain.Models;
 
-using Dayconnect.Fidelity.Domain.Models;
+namespace Dayconnect.Fidelity.Domain.Interfaces.Service;
 
-namespace Dayconnect.Fidelity.Domain.Interfaces.Service
+public interface IAutenticacaoService
 {
-    public interface IAutenticacaoService
-    {
-        Task<Login> Login(string _login, string _senha, string _ip, string _deviceId, string _versaoDispositivo);
-    }
+    Task<Login> Login(string login, string senha, string ip, string deviceId, string versaoDispositivo);
 }

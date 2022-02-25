@@ -6,7 +6,7 @@ public class Cliente
     public string CpfCnpj { get; }
     public bool Ativo { get; }
     public bool IsValid { get; private set; }
-        
+
     public Cliente(string nome, string cpfCnpj)
     {
         Nome = nome;
@@ -25,10 +25,10 @@ public class Cliente
     private void Validar()
     {
         if (string.IsNullOrWhiteSpace(Nome))
-            throw new ArgumentNullException("Nome obrigatório");
+            throw new ArgumentNullException(Nome, "Nome obrigatório");
 
         if (string.IsNullOrWhiteSpace(CpfCnpj))
-            throw new ArgumentNullException("Documento obrigatório");
+            throw new ArgumentNullException(CpfCnpj, "Documento obrigatório");
 
         IsValid = true;
     }

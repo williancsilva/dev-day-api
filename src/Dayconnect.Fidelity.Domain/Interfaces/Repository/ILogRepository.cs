@@ -1,10 +1,8 @@
 ﻿using Dayconnect.Fidelity.Domain.Models;
-using System.Threading.Tasks;
 
-namespace Dayconnect.Fidelity.Domain.Interfaces.Repository
+namespace Dayconnect.Fidelity.Domain.Interfaces.Repository;
+
+public interface ILogRepository
 {
-    public interface ILogRepository
-    {
-        Task InserirLog(LogDominio signature);
-    }
+    Task InserirLog(LogDominio signature);
 }
