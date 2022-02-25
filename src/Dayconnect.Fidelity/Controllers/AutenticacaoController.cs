@@ -1,7 +1,5 @@
 ﻿using Dayconnect.Fidelity.App.Dto.Signature;
 using Dayconnect.Fidelity.App.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
@@ -12,11 +10,10 @@ namespace Dayconnect.Fidelity.Controllers
     [ApiController]
     public class AutenticacaoController : ControllerBase
     {
-        private readonly ILogger<AutenticacaoController> _logger;
         private readonly IAutenticacaoApp _app;
-        public AutenticacaoController(ILogger<AutenticacaoController> logger, IAutenticacaoApp app)
+        
+        public AutenticacaoController(IAutenticacaoApp app)
         {
-            _logger = logger;
             _app = app;
         }
 
@@ -29,7 +26,7 @@ namespace Dayconnect.Fidelity.Controllers
             signature.Ip = HttpContext.Connection.RemoteIpAddress?.ToString();
             var result = await _app.Login(signature);
             
-            if(result.Logado)
+            if(result != null)
                 return Ok(result);
 
             return BadRequest("Dados incorretos.");
