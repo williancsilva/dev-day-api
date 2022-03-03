@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
     <metadata>
         <id>Dayconnect.Backoffice.Externo.Api</id>
-        <version>1.0.0</version>
+        <version>1.0.0-snapshot</version>
         <authors>Dayconnect - Banco Daycoval S.A</authors>
         <owners>Dayconnect - Banco Daycoval S.A</owners>
         <description>Backoffice externo - API</description>
