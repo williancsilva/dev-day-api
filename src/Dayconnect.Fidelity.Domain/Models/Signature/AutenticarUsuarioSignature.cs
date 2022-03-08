@@ -29,7 +29,7 @@ public class AutenticarUsuarioSignature
 
 public class FatorAutenticacao
 {
-    public static int TipoAutenticacao => 9;
+    public int TipoAutenticacao => 9;
     public string SerializedAuth => JsonSerializer.Serialize(new {Senha = Pass});
     private string Pass { get; }
 
