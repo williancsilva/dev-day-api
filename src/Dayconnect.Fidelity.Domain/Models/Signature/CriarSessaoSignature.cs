@@ -2,9 +2,9 @@
 
 public class CriarSessaoSignature
 {
-    public static int CodSistema => 353;
-    public static int CodTipoDispositivo => 1;
-    public static int Expiration => 20;
+    public int CodSistema => 353;
+    public int CodTipoDispositivo => 1;
+    public int Expiration => 20;
     public string Login { get; }
     public string IpUsuario { get; }
     public string DeviceId { get; }

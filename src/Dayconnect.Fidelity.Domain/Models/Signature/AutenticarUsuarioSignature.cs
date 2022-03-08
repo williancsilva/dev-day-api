@@ -4,7 +4,7 @@ namespace Dayconnect.Fidelity.Domain.Models.Signature;
 
 public class AutenticarUsuarioSignature
 {
-    public static int CodSistema => 353;
+    public int CodSistema => 353;
     public string SessionId { get; }
     public string Login { get; }
     public FatorAutenticacao[] MutiploFatorAutenticacao { get; }
