@@ -11,7 +11,7 @@ public class FatorAutenticacaoTest
     public void DeveCriarFatorAutenticacaoValido()
     {
         var model = new FatorAutenticacao("xxx");
-        Assert.Equal(9, FatorAutenticacao.TipoAutenticacao);
+        Assert.Equal(9, model.TipoAutenticacao);
         Assert.Contains("xxx", model.SerializedAuth);
     }
 }

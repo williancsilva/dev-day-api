@@ -46,7 +46,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
             return AuthenticateResult.Fail("Header de autorização inválido");
         }
 
-        if (result.IsAuthenticated == false || result.CodSistema != CodSistema)
+        if (result == null || result.IsAuthenticated == false || result.CodSistema != CodSistema)
             return AuthenticateResult.Fail("Autenticação Inválida");
 
         Context.Items["UserSession"] = result;
