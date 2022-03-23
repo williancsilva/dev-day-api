@@ -73,7 +73,7 @@
 			"item1": "DCV_DAYCONNECT",
 			"item2": {
 				"connectRetryCount": 1,
-				"applicationName": "DayconnectPixApi",
+				"applicationName": "DayconnectFidelityApi",
 				"connectRetryInterval": 10,
 				"connectTimeout": 3000,
 				"dataSource": "SDAYSP03D001",
