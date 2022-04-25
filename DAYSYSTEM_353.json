@@ -1,0 +1,94 @@
+﻿{
+	"systemId": {
+		"enviromentPrefix": 0,
+		"enviromentSuffix": null,
+		"name": "DAYSYSTEM_353"
+	},
+	"parameters": [
+		{
+			"item1": "System",
+			"item2": [
+				{
+					"item1": "Name",
+					"item2": "Backoffice Fidelity"
+				},
+				{
+					"item1": "LogApiRequest",
+					"item2": true
+				},
+				{
+					"item1": "LogApiUserRequest",
+					"item2": true
+				},
+				{
+					"item1": "UtilizarSessaoUnica",
+					"item2": true
+				},
+				{
+					"item1": "TratarMobDeskSessoesDiferentes",
+					"item2": true
+				},
+				{
+					"item1": "SessaoCriadaDuranteLogin",
+					"item2": true
+				},
+				{
+					"item1": "LoginsExcecaoSessaoUnica",
+					"item2": null
+				},
+				{
+					"item1": "UtilizarLimiteTodasSessoes",
+					"item2": true
+				},
+				{
+					"item1": "LimiteSessoesExcecao",
+					"item2": 3
+				},
+				{
+					"item1": "LogApiRequestPerServer",
+					"item2": "SDAYSP06QA002"
+				},
+				{
+					"item1": "BlockSwagger",
+					"item2": false
+				}
+			]
+		},
+		{
+			"item1": "DaySession",
+			"item2": [
+				{
+					"item1": "Timeout",
+					"item2": "25"
+				},
+				{
+					"item1": "LoginTimeout",
+					"item2": "2"
+				}
+			]
+		}
+	],
+	"connectionString": [
+		{
+			"item1": "DCV_DAYCONNECT",
+			"item2": {
+				"connectRetryCount": 1,
+				"applicationName": "DayconnectFidelityApi",
+				"connectRetryInterval": 10,
+				"connectTimeout": 3000,
+				"dataSource": "SDAYSP03D001",
+				"encrypt": false,
+				"initialCatalog": "DCV_DAYCONNECT",
+				"integratedSecurity": false,
+				"pooling": true,
+				"maxPoolSize": 100,
+				"minPoolSize": 10,
+				"multipleActiveResultSets": false,
+				"packetSize": 1000,
+				"persistSecurityInfo": true,
+				"userId": "USER_DAYCONNECT",
+				"password": "W9HiBAOegGieiYDqaYab"
+			}
+		}
+	]
+}

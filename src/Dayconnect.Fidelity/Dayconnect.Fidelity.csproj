@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dayconnect.Fidelity.App\Dayconnect.Fidelity.App.csproj" />
+    <ProjectReference Include="..\Dayconnect.Fidelity.Domain\Dayconnect.Fidelity.Domain.csproj" />
+    <ProjectReference Include="..\Dayconnect.Fidelity.ExternalService\Dayconnect.Fidelity.ExternalService.csproj" />
+    <ProjectReference Include="..\Dayconnect.Fidelity.Mediator\Dayconnect.Fidelity.Mediator.csproj" />
+    <ProjectReference Include="..\Dayconnect.Fidelity.Repository\Dayconnect.Fidelity.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
