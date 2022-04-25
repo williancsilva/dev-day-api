@@ -27,7 +27,7 @@ public class AcoesFilterAttribute : ActionFilterAttribute
     private async Task<BaseSignature> CriarSignature(ActionExecutingContext context)
     {
         var returnValue = await ReadBodyAsString(context);
-        var ip = context.HttpContext.Connection.RemoteIpAddress?.ToString();
+        var ip = string.IsNullOrEmpty(context.HttpContext.Request.Headers["X-REAL-IP"]) ? context.HttpContext.Connection.RemoteIpAddress?.ToString() : context.HttpContext.Request.Headers["X-REAL-IP"].ToString();
         var session = (SessaoResult) context.HttpContext.Items["UserSession"];
 
         var signature = JsonSerializer.Deserialize<BaseSignature>(returnValue);

@@ -32,17 +32,17 @@ public static class SwaggerConfiguration
                 Version = "v1",
                 Title = "Daycoval Fidelity",
                 Description = "Web API para gerenciar os clientes do Dayconnect pela Fidelity",
-                TermsOfService = new Uri("https://colocar.readme.bitbucket"),
+                TermsOfService = new Uri("https://bitbucket.daycoval.dev.br/projects/DBE/repos/dotnet.webapi.backofficecliente/browse"),
                 Contact = new OpenApiContact
                 {
                     Name = "Dayconnect - Projetos",
                     Email = "desenv@bancodaycoval.com.br",
-                    Url = new Uri("http://colocar.servidor.dev/DaycovalFidelityApi"),
+                    Url = new Uri("https://bitbucket.daycoval.dev.br/projects/DBE/repos/dotnet.webapi.backofficecliente/browse"),
                 },
                 License = new OpenApiLicense
                 {
                     Name = "Daycoval",
-                    Url = new Uri("https://colocar.readme.bitbucket"),
+                    Url = new Uri("https://bitbucket.daycoval.dev.br/projects/DBE/repos/dotnet.webapi.backofficecliente/browse"),
                 }
             });
             c.EnableAnnotations(true, true);
