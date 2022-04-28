@@ -70,8 +70,6 @@ app.Use((context, next) =>
     return next();
 });
 
-app.UseHttpsRedirection();
-
 app.UseCors("AllowSpecificOrigin");
 
 app.UseRouting();
