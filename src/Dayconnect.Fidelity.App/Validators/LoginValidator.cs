@@ -9,7 +9,7 @@ public class LoginValidator : AbstractValidator<LoginSignature>
     {
         RuleFor(x => x.Login).NotNull().NotEmpty().WithMessage("Código Login Obrigatório");
         RuleFor(x => x.Login).Must(y => y.Length <= 150).Unless(x => string.IsNullOrWhiteSpace(x.Login)).WithMessage("Código Login Inválido");
-        RuleFor(x => x.Login).EmailAddress().Unless(x => string.IsNullOrWhiteSpace(x.Login)).WithMessage("Formato Invalido");
+        RuleFor(x => x.Login).EmailAddress().When(x => !string.IsNullOrWhiteSpace(x.Login) && !x.Login.Length.Equals(6)).WithMessage("Formato Invalido");
         RuleFor(x => x.Password).NotNull().NotEmpty().WithMessage("Senha Obrigatória");
         RuleFor(x => x.Password).Must(y => y.Length >= 8).Unless(x => string.IsNullOrWhiteSpace(x.Password)).WithMessage("Formato Invalido");
         RuleFor(x => x.DeviceId).NotNull().NotEmpty().WithMessage("DeviceId Obrigatório");

@@ -15,8 +15,10 @@ public class AutenticacaoService : IAutenticacaoService
 
     public async Task<Login> Login(string login, string senha, string ip, string deviceId, string versaoDispositivo)
     {
+        var tipoAutenticacao = await _service.ObterTipoAutenticacao(new Models.Signature.ObterTipoAutenticacaoSignature(login));
+        if (tipoAutenticacao == 0) return null;
         var sessionId = await _service.CriarSessao(new Models.Signature.CriarSessaoSignature(login, ip, deviceId, versaoDispositivo));
-        var result = await _service.AutenticarUsuario(new Models.Signature.AutenticarUsuarioSignature(sessionId, login, senha));
+        var result = await _service.AutenticarUsuario(new Models.Signature.AutenticarUsuarioSignature(sessionId, login, senha, tipoAutenticacao));
 
         return new Login(sessionId, result?.Autenticado, result?.LoginHabilitado);
     }

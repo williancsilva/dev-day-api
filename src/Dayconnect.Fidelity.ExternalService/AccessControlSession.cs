@@ -40,4 +40,12 @@ public class AccessControlSession : IAccessControlSession
         var content = await response.Content.ReadAsStringAsync();
         return JsonSerializer.Deserialize<AutenticarUsuarioResult>(content);
     }
+    public async Task<int> ObterTipoAutenticacao(ObterTipoAutenticacaoSignature signature)
+    {
+        var response = await Http.PostAsync($"{Http.BaseAddress}Security/SelecionarUsuario", new StringContent(JsonSerializer.Serialize(signature), Encoding.UTF8, "text/json"));
+        response.EnsureSuccessStatusCode();
+        var content = await response.Content.ReadAsStringAsync();
+        var model = JsonSerializer.Deserialize<ObterTipoAutenticacaoResult>(content);
+        return model != null ? model.MutiploFatorAutenticacao.FirstOrDefault().TipoAutenticacao : 0;
+    }
 }

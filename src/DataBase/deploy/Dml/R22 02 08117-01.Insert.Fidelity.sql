@@ -10,7 +10,25 @@ BEGIN TRY
 	DECLARE @consultar INT
     DECLARE @bloquear  INT
 
-	INSERT INTO Sistema (CodSistema, Nome, Descricao, SistemaHabilitado) VALUES (@CodSistema,'Daycoval - BackOffice Fidelity', 'Sistema de back office para fidelity atender como suporte dayconnect', 1);
+	IF NOT EXISTS(SELECT 1 FROM Sistema WHERE CodSistema = @CodSistema)
+	BEGIN 
+		
+		INSERT INTO dbo.Sistema(CodSistema, Nome, Descricao, SistemaHabilitado)
+		VALUES
+			(@CodSistema, 'Daycoval - BackOffice Fidelity', 'Sistema de back office para fidelity atender como suporte dayconnect', 1)
+
+		INSERT INTO dbo.HorarioSistema(CodSistema, HorarioAbertura, HorarioFechamento, CodDiaSemana, SistemaHabilitado)
+		VALUES
+			(353, '00:00:00.0000000', '00:00:00.0000000', 1, 1)
+		,	(353, '00:00:00.0000000', '00:00:00.0000000', 2, 1)
+		,	(353, '00:00:00.0000000', '00:00:00.0000000', 3, 1)
+		,	(353, '00:00:00.0000000', '00:00:00.0000000', 4, 1)
+		,	(353, '00:00:00.0000000', '00:00:00.0000000', 5, 1)
+		,	(353, '00:00:00.0000000', '00:00:00.0000000', 6, 1)
+		,	(353, '00:00:00.0000000', '00:00:00.0000000', 7, 1)
+
+	END
+
 
     DECLARE @RoleOperadores  INT = (SELECT CodRole FROM Role WHERE Nome = 'Operadores' AND CodSistema= @CodSistema)
 

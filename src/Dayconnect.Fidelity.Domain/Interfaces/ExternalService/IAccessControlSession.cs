@@ -8,4 +8,5 @@ public interface IAccessControlSession
     Task<SessaoResult> ObterSessao(SessaoSignature signature);
     Task<string> CriarSessao(CriarSessaoSignature signature);
     Task<AutenticarUsuarioResult> AutenticarUsuario(AutenticarUsuarioSignature signature);
+    Task<int> ObterTipoAutenticacao(ObterTipoAutenticacaoSignature signature);
 }

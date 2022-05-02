@@ -23,7 +23,8 @@ public class AutenticacaoController : ControllerBase
     [ProducesResponseType((int) HttpStatusCode.OK)]
     public async Task<IActionResult> LoginAsync([FromBody, SwaggerRequestBody("A signature para logar no sistema", Required = true)] LoginSignature signature)
     {
-        signature.Ip = HttpContext.Connection.RemoteIpAddress?.ToString();
+        signature.Ip = string.IsNullOrEmpty(HttpContext.Request.Headers["X-REAL-IP"]) ? HttpContext.Connection.RemoteIpAddress?.ToString() : HttpContext.Request.Headers["X-REAL-IP"].ToString();
+        
         var result = await _app.Login(signature);
 
         if (result != null)

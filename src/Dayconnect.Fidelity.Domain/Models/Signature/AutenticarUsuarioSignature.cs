@@ -10,11 +10,11 @@ public class AutenticarUsuarioSignature
     public FatorAutenticacao[] MutiploFatorAutenticacao { get; }
     public bool IsValid { get; private set; }
 
-    public AutenticarUsuarioSignature(string sessionId, string login, string senha)
+    public AutenticarUsuarioSignature(string sessionId, string login, string senha, int tipoAutenticacao)
     {
         SessionId = sessionId;
         Login = login;
-        MutiploFatorAutenticacao = new FatorAutenticacao[] {new(senha)};
+        MutiploFatorAutenticacao = new FatorAutenticacao[] {new(senha, tipoAutenticacao)};
         Validar();
     }
 
@@ -29,12 +29,13 @@ public class AutenticarUsuarioSignature
 
 public class FatorAutenticacao
 {
-    public int TipoAutenticacao => 9;
+    public int TipoAutenticacao { get; }
     public string SerializedAuth => JsonSerializer.Serialize(new {Senha = Pass});
     private string Pass { get; }
 
-    public FatorAutenticacao(string senha)
+    public FatorAutenticacao(string senha, int tipoAutenticacao)
     {
+        TipoAutenticacao = tipoAutenticacao;
         Pass = senha;
     }
 }
