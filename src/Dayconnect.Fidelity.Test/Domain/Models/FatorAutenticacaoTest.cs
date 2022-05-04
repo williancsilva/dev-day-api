@@ -10,7 +10,7 @@ public class FatorAutenticacaoTest
     [Fact]
     public void DeveCriarFatorAutenticacaoValido()
     {
-        var model = new FatorAutenticacao("xxx");
+        var model = new FatorAutenticacao("xxx", 9);
         Assert.Equal(9, model.TipoAutenticacao);
         Assert.Contains("xxx", model.SerializedAuth);
     }

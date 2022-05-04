@@ -29,7 +29,13 @@ public class ModelFixture
     public static CriarSessaoSignature CriarSessao => GerarCriarSessaoSignatureValido();
 
     public static SessaoSignature Sessao => GerarSessaoSignatureValido();
+    public static ObterTipoAutenticacaoSignature ObterTipoAutenticacao => GerarObterTipoAutenticacaoSignatureValido();
+    private static ObterTipoAutenticacaoSignature GerarObterTipoAutenticacaoSignatureValido()
+    {
+        var faker = new Faker<ObterTipoAutenticacaoSignature>("pt_BR").CustomInstantiator(f => new ObterTipoAutenticacaoSignature(f.Internet.ExampleEmail()));
 
+        return faker.Generate(1).First();
+    }
     private static SessaoSignature GerarSessaoSignatureValido()
     {
         var faker = new Faker<SessaoSignature>("pt_BR").CustomInstantiator(f => new SessaoSignature(f.Random.Guid().ToString()));
@@ -48,7 +54,7 @@ public class ModelFixture
     private static AutenticarUsuarioSignature GerarAutenticarUsuarioSignatureValido()
     {
         var faker = new Faker<AutenticarUsuarioSignature>("pt_BR").CustomInstantiator(f =>
-            new AutenticarUsuarioSignature(f.Random.Guid().ToString(), f.Internet.Email(), f.Internet.Password()));
+            new AutenticarUsuarioSignature(f.Random.Guid().ToString(), f.Internet.Email(), f.Internet.Password(),9));
 
         return faker.Generate(1).First();
     }

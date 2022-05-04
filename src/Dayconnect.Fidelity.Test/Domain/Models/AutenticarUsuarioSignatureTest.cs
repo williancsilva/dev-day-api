@@ -23,7 +23,7 @@ public class AutenticarUsuarioSignatureTest
     {
         var faker = new Faker<AutenticarUsuarioSignature>("pt_BR").CustomInstantiator(f =>
         {
-            var autenticarUsuario = new AutenticarUsuarioSignature(param, f.Internet.Email(), f.Internet.Password());
+            var autenticarUsuario = new AutenticarUsuarioSignature(param, f.Internet.Email(), f.Internet.Password(), 9);
             return autenticarUsuario;
         });
 
