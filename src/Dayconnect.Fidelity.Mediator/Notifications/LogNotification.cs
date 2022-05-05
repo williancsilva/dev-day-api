@@ -4,7 +4,7 @@ namespace Dayconnect.Fidelity.Mediator.Notifications;
 
 public class LogNotification : INotification
 {
-    public string CpfCnpjCliente { get; }
+    public string cpfCnpjCliente { get; }
     public string Metodo { get; }
     public string Url { get; }
     public string LoginOperador { get; }
@@ -13,7 +13,7 @@ public class LogNotification : INotification
 
     public LogNotification(string cpfCnpjCliente, string metodo, string url, string loginOperador, string ip)
     {
-        CpfCnpjCliente = cpfCnpjCliente;
+        this.cpfCnpjCliente = cpfCnpjCliente;
         Metodo = metodo;
         Url = url;
         LoginOperador = loginOperador;

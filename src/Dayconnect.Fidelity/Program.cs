@@ -31,7 +31,8 @@ builder.Services.IntegrateAcessControl(endPointAccessControl);
 
 builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthenticationHandler", null);
 
-builder.Services.AddAuthorization(options => { options.AddPolicy("Operar", policy => policy.RequireClaim("Operadores", new string[] {"consultar", "bloquear"})); });
+//builder.Services.AddAuthorization(options => { options.AddPolicy("Operar", policy => policy.RequireClaim("Operadores", new string[] { "consultar", "bloquear" })); });
+builder.Services.AddAuthorization();
 
 builder.Services.AddMvcCore(options => options.Filters.Add<NotificationFilter>());
 builder.Services.AddMvcCore(options => options.Filters.Add<LogFilter>());
@@ -44,25 +45,24 @@ builder.Services.IntegrateSwagger().AddMediatR(typeof(Program));
 
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment())
+
+app.UseExceptionHandler(exceptionHandlerApp =>
 {
-    app.UseExceptionHandler(exceptionHandlerApp =>
+    exceptionHandlerApp.Run(async context =>
     {
-        exceptionHandlerApp.Run(async context =>
+        if (context.Response.StatusCode == StatusCodes.Status500InternalServerError)
         {
-            if (context.Response.StatusCode == StatusCodes.Status500InternalServerError)
-            {
-                var ex = context.Features.Get<IExceptionHandlerFeature>();
-                if (ex != null && enabledLog)
-                    await ServiceLog.GravaLog(ex.Error.ToString(), context.Request.Path, context.Request.Method);
+            var ex = context.Features.Get<IExceptionHandlerFeature>();
+            if (ex != null && enabledLog)
+                await ServiceLog.GravaLog(ex.Error.ToString(), context.Request.Path, context.Request.Method);
 
-                context.Response.ContentType = Text.Plain;
+            context.Response.ContentType = Text.Plain;
 
-                await context.Response.WriteAsync("Estamos enfrentando problema. Tente novamente mais tarde ou procure o administrador do sistema.");
-            }
-        });
+            await context.Response.WriteAsync("Estamos enfrentando problema. Tente novamente mais tarde ou procure o administrador do sistema.");
+        }
     });
-}
+});
+
 
 app.Use((context, next) =>
 {

@@ -53,12 +53,11 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
 
         var claimsUser = new List<Claim>
         {
-            new(ClaimTypes.NameIdentifier, result.Id ?? string.Empty),
-            new(ClaimTypes.Name, result.Id ?? string.Empty)
+            new(ClaimTypes.NameIdentifier, result.Id ?? string.Empty)
         };
 
         if (result.Permission.Features != null)
-            claimsUser.AddRange(result.Permission.Features.Select(x => new Claim("Operadores", x)));
+            claimsUser.AddRange(result.Permission.Features.Select(x => new Claim(ClaimTypes.Role, x)));
 
         var claims = claimsUser.ToArray();
         var identity = new ClaimsIdentity(claims, Scheme.Name);

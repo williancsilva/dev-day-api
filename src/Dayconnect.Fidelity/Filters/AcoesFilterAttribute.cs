@@ -19,7 +19,7 @@ public class AcoesFilterAttribute : ActionFilterAttribute
         var signature = await CriarSignature(context);
 
         if (mediatorHandler != null)
-            await mediatorHandler.PublicarEvento(new LogNotification(signature.CpfCnpj, signature.Metodo, signature.Url, signature.Operador, signature.Ip));
+            await mediatorHandler.PublicarEvento(new LogNotification(signature.cpfCnpj, signature.Metodo, signature.Url, signature.Operador, signature.Ip));
 
         await next();
     }
@@ -62,7 +62,7 @@ public class AcoesFilterAttribute : ActionFilterAttribute
 
     public class BaseSignature
     {
-        public string CpfCnpj { get; set; }
+        public string cpfCnpj { get; set; }
         public string Metodo { get; set; }
         public string Url { get; set; }
         public string Operador { get; set; }

@@ -18,7 +18,7 @@ public class LogRepository : DcvDayconnect, ILogRepository
             new("@login", SqlDbType.VarChar, 150) {Value = signature.LoginOperador},
             new("@url", SqlDbType.VarChar, 150) {Value = signature.Url},
             new("@dataRegistro", SqlDbType.DateTime) {Value = signature.DataRegistro},
-            new("@documento", SqlDbType.VarChar, 14) {Value = signature.CpfCnpjCliente},
+            new("@documento", SqlDbType.VarChar, 14) {Value = signature.cpfCnpjCliente},
             new("@metodo", SqlDbType.VarChar, 80) {Value = signature.Metodo}
         };
 

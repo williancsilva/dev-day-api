@@ -25,7 +25,7 @@ public class ClienteController : ControllerBase
     [Route(nameof(ObterDadosCliente))]
     [SwaggerOperation("Obtem informa��es do cliente")]
     [ProducesResponseType(typeof(ObterDadosClienteResult), (int) HttpStatusCode.OK)]
-    [Authorize(Policy = "Operar")]
+    [Authorize(Roles = "consultar")]
     [AcoesFilterAttribute]
     public async Task<IActionResult> ObterDadosCliente([SwaggerRequestBody("A signature para obter o cliente Dayconnect", Required = true)] ObterDadosClienteSignature signature)
     {
@@ -37,7 +37,7 @@ public class ClienteController : ControllerBase
     [Route(nameof(InativaCliente))]
     [SwaggerOperation("Inativa o cliente Dayconnect")]
     [ProducesResponseType((int) HttpStatusCode.OK)]
-    [Authorize(Policy = "Operar")]
+    [Authorize(Roles = "bloquear")]
     [AcoesFilterAttribute]
     public async Task<IActionResult> InativaCliente(
         [FromBody, SwaggerRequestBody("A signature para inativar o cliente Dayconnect", Required = true)] InativarClienteSignature signature)

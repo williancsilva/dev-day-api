@@ -2,7 +2,7 @@
 
 public class LogDominio
 {
-    public string CpfCnpjCliente { get; }
+    public string cpfCnpjCliente { get; }
     public string Metodo { get; }
     public string Url { get; }
     public string LoginOperador { get; }
@@ -12,7 +12,7 @@ public class LogDominio
 
     public LogDominio(string cpfCnpjCliente, string metodo, string url, string loginOperador, string ip)
     {
-        CpfCnpjCliente = cpfCnpjCliente;
+        this.cpfCnpjCliente = cpfCnpjCliente;
         Metodo = metodo;
         Url = url;
         LoginOperador = loginOperador;
@@ -26,8 +26,8 @@ public class LogDominio
         if (string.IsNullOrWhiteSpace(Metodo))
             throw new ArgumentNullException(Metodo, "Metodo obrigatório");
 
-        if (string.IsNullOrWhiteSpace(CpfCnpjCliente))
-            throw new ArgumentNullException(CpfCnpjCliente, "Documento obrigatório");
+        if (string.IsNullOrWhiteSpace(cpfCnpjCliente))
+            throw new ArgumentNullException(cpfCnpjCliente, "Documento obrigatório");
 
         if (string.IsNullOrWhiteSpace(Url))
             throw new ArgumentNullException(Url, "Url obrigatório");
