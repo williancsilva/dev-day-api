@@ -24,7 +24,7 @@ public class LogRepository : DcvDayconnect, ILogRepository
 
         var execute = new CreateExecuteAdo()
             .WithParameters(parametros)
-            .WithProcedure("fidelity.P_INCLUIR_LOG");
+            .WithProcedure("backoffice.P_INCLUIR_LOG");
 
         await ExecuteNonQueryAsync(execute);
     }

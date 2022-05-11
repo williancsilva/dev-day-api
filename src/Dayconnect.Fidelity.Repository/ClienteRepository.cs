@@ -20,7 +20,7 @@ public class ClienteRepository : DcvDayconnect, IClienteRepository
 
         var execute = new CreateExecuteAdo()
             .WithParameters(parametros)
-            .WithProcedure("fidelity.P_OBTER_CLIENTE");
+            .WithProcedure("backoffice.P_OBTER_CLIENTE");
 
         return await ExecuteListAsync(execute, ClienteMapper.Convert);
     }
@@ -34,7 +34,7 @@ public class ClienteRepository : DcvDayconnect, IClienteRepository
 
         var execute = new CreateExecuteAdo()
             .WithParameters(parametros)
-            .WithProcedure("fidelity.P_INATIVAR_CLIENTE");
+            .WithProcedure("backoffice.P_INATIVAR_CLIENTE");
 
         await ExecuteNonQueryAsync(execute);
     }
