@@ -15,7 +15,7 @@ BEGIN TRY
 		
 		INSERT INTO dbo.Sistema(CodSistema, Nome, Descricao, SistemaHabilitado)
 		VALUES
-			(@CodSistema, 'Daycoval - BackOffice Fidelity', 'Sistema de back office para fidelity atender como suporte dayconnect', 1)
+			(@CodSistema, 'Daycoval - BackOffice backoffice', 'Sistema de back office para backoffice atender como suporte dayconnect', 1)
 
 		INSERT INTO dbo.HorarioSistema(CodSistema, HorarioAbertura, HorarioFechamento, CodDiaSemana, SistemaHabilitado)
 		VALUES
@@ -34,7 +34,7 @@ BEGIN TRY
 
     IF @RoleOperadores IS NULL BEGIN
 		INSERT INTO Role(CodSistema, Nome, Descricao, RoleHabilitada)
-						VALUES	(@CodSistema,'Operadores', 'Role para operadores do backoffice fidelity', 1)
+						VALUES	(@CodSistema,'Operadores', 'Role para operadores do backoffice backoffice', 1)
 		SET @RoleOperadores = SCOPE_IDENTITY()
 	END
 

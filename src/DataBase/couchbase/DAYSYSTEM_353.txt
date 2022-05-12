@@ -10,7 +10,7 @@
       "item2": [
         {
           "item1": "Name",
-          "item2": "Backoffice Fidelity"
+          "item2": "Backoffice backoffice"
         },
         {
           "item1": "LogApiRequest",

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="DayFw.DataAccess" Version="3.0.1" />
+	</ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\Dayconnect.backoffice.Domain\Dayconnect.backoffice.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
