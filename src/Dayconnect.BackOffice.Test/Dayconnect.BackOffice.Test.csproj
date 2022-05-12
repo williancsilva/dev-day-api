@@ -34,10 +34,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dayconnect.Backoffice.App\Dayconnect.Backoffice.App.csproj" />
-    <ProjectReference Include="..\Dayconnect.Backoffice.Domain\Dayconnect.Backoffice.Domain.csproj" />
-    <ProjectReference Include="..\Dayconnect.Backoffice.ExternalService\Dayconnect.Backoffice.ExternalService.csproj" />
-    <ProjectReference Include="..\Dayconnect.Backoffice.Mediator\Dayconnect.Backoffice.Mediator.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.App\Dayconnect.BackOffice.App.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.Domain\Dayconnect.BackOffice.Domain.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.ExternalService\Dayconnect.BackOffice.ExternalService.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.Mediator\Dayconnect.BackOffice.Mediator.csproj" />
   </ItemGroup>
 
 </Project>

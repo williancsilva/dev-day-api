@@ -13,7 +13,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Dayconnect.Backoffice.Domain\Dayconnect.Backoffice.Domain.csproj" />
+	  <ProjectReference Include="..\Dayconnect.BackOffice.Domain\Dayconnect.BackOffice.Domain.csproj" />
 	</ItemGroup>
 
 </Project>
