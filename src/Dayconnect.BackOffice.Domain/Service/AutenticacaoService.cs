@@ -13,7 +13,7 @@ public class AutenticacaoService : IAutenticacaoService
         _service = service;
     }
 
-    public async Task<Login> Login(string login, string senha, string ip, string deviceId, string versaoDispositivo)
+    public async Task<Login?> Login(string login, string senha, string ip, string deviceId, string versaoDispositivo)
     {
         var tipoAutenticacao = await _service.ObterTipoAutenticacao(new Models.Signature.ObterTipoAutenticacaoSignature(login));
         if (tipoAutenticacao == 0) return null;

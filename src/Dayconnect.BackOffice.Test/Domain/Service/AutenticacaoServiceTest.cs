@@ -55,7 +55,7 @@ namespace Dayconnect.backoffice.Test.Domain.Service
             mocker.GetMock<IAccessControlSession>().Verify(x => x.CriarSessao(It.IsAny<CriarSessaoSignature>()), Times.Once);
             mocker.GetMock<IAccessControlSession>().Verify(x => x.AutenticarUsuario(It.IsAny<AutenticarUsuarioSignature>()), Times.Once);
             
-            Assert.Equal(sessionId, result.Id);
+            Assert.Equal(sessionId, result?.Id);
         }
 
         [Fact(DisplayName = "Deve retornar nulo com tipo autenticacao invalida")]

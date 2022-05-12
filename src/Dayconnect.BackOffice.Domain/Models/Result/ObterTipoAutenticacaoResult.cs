@@ -2,7 +2,7 @@
 {
     public class ObterTipoAutenticacaoResult
     {
-        public IEnumerable<FatorAutenticacao> MutiploFatorAutenticacao { get; set; }
+        public IEnumerable<FatorAutenticacao>? MutiploFatorAutenticacao { get; set; }
 
     }
     public class FatorAutenticacao
