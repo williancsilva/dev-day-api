@@ -8,7 +8,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DayFw.DataAccess" Version="3.0.1" />
+		<PackageReference Include="DayFw.DataAccess" Version="6.0.0-alpha01" />
 	</ItemGroup>
 	
   <ItemGroup>
