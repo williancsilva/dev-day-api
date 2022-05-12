@@ -8,13 +8,13 @@ coverlet `
 .\bin\Debug\net6.0\Dayconnect.Backoffice.Test.dll `
 --target "dotnet" `
 --targetargs "test --no-build" `
---exclude "[*]Dayconnect.Backoffice.Repository.*" `
---exclude "[*]Dayconnect.Backoffice.ExternalService.*" `
---exclude "[*]Dayconnect.Backoffice.App.Dto.Result.*" `
---exclude "[*]Dayconnect.Backoffice.Domain.Models.Result.*" `
---exclude "[*]Dayconnect.Backoffice.App.Validators.CustomValidator.*" `
---include "[*]Dayconnect.Backoffice.App*" `
---include "[*]Dayconnect.Backoffice.Domain*" `
+--exclude "[*]Dayconnect.backoffice.Repository.*" `
+--exclude "[*]Dayconnect.backoffice.ExternalService.*" `
+--exclude "[*]Dayconnect.backoffice.App.Dto.Result.*" `
+--exclude "[*]Dayconnect.backoffice.Domain.Models.Result.*" `
+--exclude "[*]Dayconnect.backoffice.App.Validators.CustomValidator.*" `
+--include "[*]Dayconnect.backoffice.App*" `
+--include "[*]Dayconnect.backoffice.Domain*" `
 -f cobertura
 
 reportgenerator -reports:"coverage.cobertura.xml" -targetdir:"coveragereport" -reporttypes:Html
