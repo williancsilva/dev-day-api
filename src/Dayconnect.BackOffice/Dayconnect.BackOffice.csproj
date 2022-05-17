@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<LangVersion>preview</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	  <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dayconnect.BackOffice.App\Dayconnect.BackOffice.App.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.Domain\Dayconnect.BackOffice.Domain.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.ExternalService\Dayconnect.BackOffice.ExternalService.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.Mediator\Dayconnect.BackOffice.Mediator.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.Repository\Dayconnect.BackOffice.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

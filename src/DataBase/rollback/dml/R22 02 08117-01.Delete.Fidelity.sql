@@ -1,0 +1,22 @@
+USE DCV_CONTROL
+GO
+
+
+BEGIN TRAN
+BEGIN TRY
+
+	DECLARE @CodSistema INT = 353
+	
+	DELETE FROM RoleFeature WHERE CodSistema = @CodSistema
+	DELETE FROM Role WHERE CodSistema = @CodSistema
+	DELETE FROM Feature WHERE CodSistema = @CodSistema
+	DELETE FROM Sistema WHERE CodSistema = @CodSistema
+	COMMIT
+
+END TRY
+BEGIN CATCH
+	ROLLBACK
+    RAISERROR('ERRO AO EXECUTAR DML', 16, 1)
+END CATCH
+
+
