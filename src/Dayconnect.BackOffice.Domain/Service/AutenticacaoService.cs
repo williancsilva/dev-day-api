@@ -20,6 +20,6 @@ public class AutenticacaoService : IAutenticacaoService
         var sessionId = await _service.CriarSessao(new Models.Signature.CriarSessaoSignature(login, ip, deviceId, versaoDispositivo));
         var result = await _service.AutenticarUsuario(new Models.Signature.AutenticarUsuarioSignature(sessionId, login, senha, tipoAutenticacao));
 
-        return new Login(sessionId, result?.Autenticado, result?.LoginHabilitado);
+        return new Login(sessionId, result?.Autenticado, true);
     }
 }
