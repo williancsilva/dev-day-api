@@ -14,7 +14,7 @@
 
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Dayconnect.BackOffice.Domain\Dayconnect.BackOffice.Domain.csproj" />
+	  <ProjectReference Include="..\Dayconnect.BackOffice.Domain\DevSecOps.BackOffice.Domain.csproj" />
 	</ItemGroup>
 	
 </Project>

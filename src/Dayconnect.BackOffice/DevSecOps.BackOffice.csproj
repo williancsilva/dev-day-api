@@ -14,11 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dayconnect.BackOffice.App\Dayconnect.BackOffice.App.csproj" />
-    <ProjectReference Include="..\Dayconnect.BackOffice.Domain\Dayconnect.BackOffice.Domain.csproj" />
-    <ProjectReference Include="..\Dayconnect.BackOffice.ExternalService\Dayconnect.BackOffice.ExternalService.csproj" />
-    <ProjectReference Include="..\Dayconnect.BackOffice.Mediator\Dayconnect.BackOffice.Mediator.csproj" />
-    <ProjectReference Include="..\Dayconnect.BackOffice.Repository\Dayconnect.BackOffice.Repository.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.App\DevSecOps.BackOffice.App.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.Domain\DevSecOps.BackOffice.Domain.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.ExternalService\DevSecOps.BackOffice.ExternalService.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.Mediator\DevSecOps.BackOffice.Mediator.csproj" />
+    <ProjectReference Include="..\Dayconnect.BackOffice.Repository\DevSecOps.BackOffice.Repository.csproj" />
   </ItemGroup>
 
 </Project>

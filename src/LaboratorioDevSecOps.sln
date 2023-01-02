@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dayconnect.BackOffice", "Dayconnect.BackOffice\Dayconnect.BackOffice.csproj", "{BE001E80-C9DD-49FB-9A03-7C4E7A92E929}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevSecOps.BackOffice", "Dayconnect.BackOffice\DevSecOps.BackOffice.csproj", "{BE001E80-C9DD-49FB-9A03-7C4E7A92E929}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dayconnect.BackOffice.Domain", "Dayconnect.BackOffice.Domain\Dayconnect.BackOffice.Domain.csproj", "{DD30CFF1-3107-4652-979D-AED74E1FEB7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevSecOps.BackOffice.Domain", "Dayconnect.BackOffice.Domain\DevSecOps.BackOffice.Domain.csproj", "{DD30CFF1-3107-4652-979D-AED74E1FEB7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dayconnect.BackOffice.ExternalService", "Dayconnect.BackOffice.ExternalService\Dayconnect.BackOffice.ExternalService.csproj", "{3598C809-E1ED-4243-A821-BC7403EB76C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevSecOps.BackOffice.ExternalService", "Dayconnect.BackOffice.ExternalService\DevSecOps.BackOffice.ExternalService.csproj", "{3598C809-E1ED-4243-A821-BC7403EB76C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dayconnect.BackOffice.Repository", "Dayconnect.BackOffice.Repository\Dayconnect.BackOffice.Repository.csproj", "{3641C9E2-CF46-4774-9A67-6482AE0A1DAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevSecOps.BackOffice.Repository", "Dayconnect.BackOffice.Repository\DevSecOps.BackOffice.Repository.csproj", "{3641C9E2-CF46-4774-9A67-6482AE0A1DAA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dayconnect.BackOffice.App", "Dayconnect.BackOffice.App\Dayconnect.BackOffice.App.csproj", "{88EE3087-B9DE-44FA-9D5F-EEBCDEFCCBB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevSecOps.BackOffice.App", "Dayconnect.BackOffice.App\DevSecOps.BackOffice.App.csproj", "{88EE3087-B9DE-44FA-9D5F-EEBCDEFCCBB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dayconnect.BackOffice.Mediator", "Dayconnect.BackOffice.Mediator\Dayconnect.BackOffice.Mediator.csproj", "{693A2EFE-CC4F-4BB2-B766-0F446C5666AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevSecOps.BackOffice.Mediator", "Dayconnect.BackOffice.Mediator\DevSecOps.BackOffice.Mediator.csproj", "{693A2EFE-CC4F-4BB2-B766-0F446C5666AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dayconnect.BackOffice.Test", "Dayconnect.BackOffice.Test\Dayconnect.BackOffice.Test.csproj", "{6D0D7EB1-3E4F-4FFA-8447-B439123B55C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevSecOps.BackOffice.Test", "Dayconnect.BackOffice.Test\DevSecOps.BackOffice.Test.csproj", "{6D0D7EB1-3E4F-4FFA-8447-B439123B55C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
