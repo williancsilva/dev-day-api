@@ -1,4 +1,4 @@
-﻿namespace Dayconnect.backoffice.App.Dto;
+﻿namespace DevSecOps.backoffice.App.Dto;
 
 public interface IDtoContract
 {

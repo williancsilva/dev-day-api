@@ -1,8 +1,8 @@
-﻿using Dayconnect.backoffice.App.Dto.Signature;
-using Dayconnect.backoffice.App.Validators.CustomValidator;
+﻿using DevSecOps.backoffice.App.Dto.Signature;
+using DevSecOps.backoffice.App.Validators.CustomValidator;
 using FluentValidation;
 
-namespace Dayconnect.backoffice.App.Validators;
+namespace DevSecOps.backoffice.App.Validators;
 
 public class ObterDadosClienteValidator : AbstractValidator<ObterDadosClienteSignature>
 {

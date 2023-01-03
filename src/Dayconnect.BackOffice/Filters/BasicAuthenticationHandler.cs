@@ -1,13 +1,13 @@
-﻿using Dayconnect.backoffice.Domain.Interfaces.ExternalService;
-using Dayconnect.backoffice.Domain.Models.Result;
-using Dayconnect.backoffice.Domain.Models.Signature;
+﻿using DevSecOps.backoffice.Domain.Interfaces.ExternalService;
+using DevSecOps.backoffice.Domain.Models.Result;
+using DevSecOps.backoffice.Domain.Models.Signature;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 
-namespace Dayconnect.backoffice.Filters;
+namespace DevSecOps.backoffice.Filters;
 
 public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {

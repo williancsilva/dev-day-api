@@ -1,7 +1,7 @@
-﻿using Dayconnect.backoffice.App.Dto.Signature;
+﻿using DevSecOps.backoffice.App.Dto.Signature;
 using FluentValidation;
 
-namespace Dayconnect.backoffice.App.Validators;
+namespace DevSecOps.backoffice.App.Validators;
 
 public class LoginValidator : AbstractValidator<LoginSignature>
 {

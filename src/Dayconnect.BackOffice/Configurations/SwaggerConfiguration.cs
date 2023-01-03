@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace Dayconnect.backoffice.Configurations;
+namespace DevSecOps.backoffice.Configurations;
 
 public static class SwaggerConfiguration
 {

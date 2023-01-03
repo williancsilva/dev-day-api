@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Dayconnect.backoffice.Mediator.Notifications;
+namespace DevSecOps.backoffice.Mediator.Notifications;
 
 public class LogNotification : INotification
 {

@@ -1,13 +1,13 @@
-﻿using Dayconnect.backoffice.Domain.Interfaces.Repository;
-using Dayconnect.backoffice.Domain.Models;
-using Dayconnect.backoffice.Repository.Base;
-using Dayconnect.backoffice.Repository.Mappers;
+﻿using DevSecOps.backoffice.Domain.Interfaces.Repository;
+using DevSecOps.backoffice.Domain.Models;
+using DevSecOps.backoffice.Repository.Base;
+using DevSecOps.backoffice.Repository.Mappers;
 using DayFw.DataAccess;
 using DayFw.DataAccess.Extension.Ado;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Dayconnect.backoffice.Repository;
+namespace DevSecOps.backoffice.Repository;
 
 public class ClienteRepository : DcvDayconnect, IClienteRepository
 {

@@ -1,6 +1,6 @@
-﻿using Dayconnect.backoffice.Domain.Models.Result;
-using Dayconnect.backoffice.Mediator.Handles;
-using Dayconnect.backoffice.Mediator.Notifications;
+﻿using DevSecOps.backoffice.Domain.Models.Result;
+using DevSecOps.backoffice.Mediator.Handles;
+using DevSecOps.backoffice.Mediator.Notifications;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Text;
 using System.Text.Json;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 #nullable disable
 
-namespace Dayconnect.backoffice.Filters;
+namespace DevSecOps.backoffice.Filters;
 
 public class AcoesFilterAttribute : ActionFilterAttribute
 {

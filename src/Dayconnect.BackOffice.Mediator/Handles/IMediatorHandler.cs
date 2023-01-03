@@ -1,4 +1,4 @@
-﻿namespace Dayconnect.backoffice.Mediator.Handles;
+﻿namespace DevSecOps.backoffice.Mediator.Handles;
 
 public interface IMediatorHandler
 {

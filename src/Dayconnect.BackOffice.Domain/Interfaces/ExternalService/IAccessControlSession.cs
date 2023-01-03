@@ -1,7 +1,7 @@
-﻿using Dayconnect.backoffice.Domain.Models.Result;
-using Dayconnect.backoffice.Domain.Models.Signature;
+﻿using DevSecOps.backoffice.Domain.Models.Result;
+using DevSecOps.backoffice.Domain.Models.Signature;
 
-namespace Dayconnect.backoffice.Domain.Interfaces.ExternalService;
+namespace DevSecOps.backoffice.Domain.Interfaces.ExternalService;
 
 public interface IAccessControlSession
 {

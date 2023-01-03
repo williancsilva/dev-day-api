@@ -1,6 +1,6 @@
 ﻿using DayFw.DataAccess.Interfaces;
 
-namespace Dayconnect.backoffice.Repository.Base;
+namespace DevSecOps.backoffice.Repository.Base;
 
 public class DcvDayconnectParameters : IConnectionParameters
 {

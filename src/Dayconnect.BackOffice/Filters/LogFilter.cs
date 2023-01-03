@@ -1,4 +1,4 @@
-﻿using Dayconnect.backoffice.LogHelper;
+﻿using DevSecOps.backoffice.LogHelper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Text.Json;
 
 #nullable disable
 
-namespace Dayconnect.backoffice.Filters;
+namespace DevSecOps.backoffice.Filters;
 
 public class LogFilter : IActionFilter
 {

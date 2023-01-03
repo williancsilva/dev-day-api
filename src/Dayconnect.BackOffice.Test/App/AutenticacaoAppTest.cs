@@ -1,14 +1,14 @@
-﻿using Dayconnect.backoffice.App;
-using Dayconnect.backoffice.App.Notifications;
-using Dayconnect.backoffice.Domain.Interfaces.Service;
-using Dayconnect.backoffice.Test.App.Fixtures;
-using Dayconnect.backoffice.Test.Domain.Fixtures;
+﻿using DevSecOps.backoffice.App;
+using DevSecOps.backoffice.App.Notifications;
+using DevSecOps.backoffice.Domain.Interfaces.Service;
+using DevSecOps.backoffice.Test.App.Fixtures;
+using DevSecOps.backoffice.Test.Domain.Fixtures;
 using Moq;
 using Moq.AutoMock;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Dayconnect.backoffice.Test.App;
+namespace DevSecOps.backoffice.Test.App;
 
 [Collection(nameof(DtoCollection))]
 public class AutenticacaoAppTest

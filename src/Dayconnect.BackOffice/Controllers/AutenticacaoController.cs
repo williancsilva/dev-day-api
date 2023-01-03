@@ -1,10 +1,10 @@
-﻿using Dayconnect.backoffice.App.Dto.Signature;
-using Dayconnect.backoffice.App.Interfaces;
+﻿using DevSecOps.backoffice.App.Dto.Signature;
+using DevSecOps.backoffice.App.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
 
-namespace Dayconnect.backoffice.Controllers;
+namespace DevSecOps.backoffice.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

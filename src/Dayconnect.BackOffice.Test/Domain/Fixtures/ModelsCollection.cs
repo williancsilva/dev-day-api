@@ -1,13 +1,13 @@
 ﻿using Bogus;
 using Bogus.Extensions.Brazil;
-using Dayconnect.backoffice.Domain.Models;
-using Dayconnect.backoffice.Domain.Models.Signature;
+using DevSecOps.backoffice.Domain.Models;
+using DevSecOps.backoffice.Domain.Models.Signature;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace Dayconnect.backoffice.Test.Domain.Fixtures;
+namespace DevSecOps.backoffice.Test.Domain.Fixtures;
 
 [CollectionDefinition(nameof(ModelsCollection))]
 public class ModelsCollection : ICollectionFixture<ModelFixture>

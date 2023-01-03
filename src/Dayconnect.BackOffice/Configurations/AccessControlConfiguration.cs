@@ -1,9 +1,9 @@
-﻿using Dayconnect.backoffice.Domain.Interfaces.ExternalService;
-using Dayconnect.backoffice.ExternalService;
+﻿using DevSecOps.backoffice.Domain.Interfaces.ExternalService;
+using DevSecOps.backoffice.ExternalService;
 
 #nullable disable
 
-namespace Dayconnect.backoffice.Configurations;
+namespace DevSecOps.backoffice.Configurations;
 
 public static class AccessControlConfiguration
 {

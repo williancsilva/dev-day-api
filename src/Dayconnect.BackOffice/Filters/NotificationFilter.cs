@@ -1,9 +1,9 @@
-﻿using Dayconnect.backoffice.App.Notifications;
+﻿using DevSecOps.backoffice.App.Notifications;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Net;
 using System.Text.Json;
 
-namespace Dayconnect.backoffice.Filters;
+namespace DevSecOps.backoffice.Filters;
 
 public sealed class NotificationFilter : IAsyncResultFilter
 {

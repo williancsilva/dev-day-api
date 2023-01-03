@@ -1,6 +1,6 @@
-﻿using Dayconnect.backoffice.Domain.Models;
+﻿using DevSecOps.backoffice.Domain.Models;
 
-namespace Dayconnect.backoffice.Domain.Interfaces.Service;
+namespace DevSecOps.backoffice.Domain.Interfaces.Service;
 
 public interface IAutenticacaoService
 {

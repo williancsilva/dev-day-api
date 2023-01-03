@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Dayconnect.backoffice.LogHelper;
+namespace DevSecOps.backoffice.LogHelper;
 
 public static class SyslogHelper
 {

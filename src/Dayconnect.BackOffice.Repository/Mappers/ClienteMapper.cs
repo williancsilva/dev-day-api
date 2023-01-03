@@ -1,8 +1,8 @@
-﻿using Dayconnect.backoffice.Domain.Models;
+﻿using DevSecOps.backoffice.Domain.Models;
 using DayFw.DataAccess.Helpers;
 using System.Data;
 
-namespace Dayconnect.backoffice.Repository.Mappers;
+namespace DevSecOps.backoffice.Repository.Mappers;
 
 public static class ClienteMapper
 {

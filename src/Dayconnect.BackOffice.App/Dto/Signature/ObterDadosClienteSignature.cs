@@ -1,7 +1,7 @@
-﻿using Dayconnect.backoffice.App.Validators;
+﻿using DevSecOps.backoffice.App.Validators;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace Dayconnect.backoffice.App.Dto.Signature;
+namespace DevSecOps.backoffice.App.Dto.Signature;
 
 public class ObterDadosClienteSignature : DtoBase, IDtoContract
 {

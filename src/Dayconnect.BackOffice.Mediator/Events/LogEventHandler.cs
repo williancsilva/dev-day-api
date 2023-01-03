@@ -1,9 +1,9 @@
-﻿using Dayconnect.backoffice.Domain.Interfaces.Repository;
-using Dayconnect.backoffice.Mediator.Adapters;
-using Dayconnect.backoffice.Mediator.Notifications;
+﻿using DevSecOps.backoffice.Domain.Interfaces.Repository;
+using DevSecOps.backoffice.Mediator.Adapters;
+using DevSecOps.backoffice.Mediator.Notifications;
 using MediatR;
 
-namespace Dayconnect.backoffice.Mediator.Events;
+namespace DevSecOps.backoffice.Mediator.Events;
 
 public class LogEventHandler : INotificationHandler<LogNotification>
 {

@@ -1,8 +1,8 @@
-﻿using Dayconnect.backoffice.Domain.Interfaces.ExternalService;
-using Dayconnect.backoffice.Domain.Interfaces.Service;
-using Dayconnect.backoffice.Domain.Models;
+﻿using DevSecOps.backoffice.Domain.Interfaces.ExternalService;
+using DevSecOps.backoffice.Domain.Interfaces.Service;
+using DevSecOps.backoffice.Domain.Models;
 
-namespace Dayconnect.backoffice.Domain.Service;
+namespace DevSecOps.backoffice.Domain.Service;
 
 public class AutenticacaoService : IAutenticacaoService
 {

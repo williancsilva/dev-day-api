@@ -1,6 +1,6 @@
-using Dayconnect.backoffice.Configurations;
-using Dayconnect.backoffice.Filters;
-using Dayconnect.backoffice.LogHelper;
+using DevSecOps.backoffice.Configurations;
+using DevSecOps.backoffice.Filters;
+using DevSecOps.backoffice.LogHelper;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Diagnostics;

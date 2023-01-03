@@ -1,4 +1,4 @@
-﻿namespace Dayconnect.backoffice.App.Validators.CustomValidator;
+﻿namespace DevSecOps.backoffice.App.Validators.CustomValidator;
 
 public static class DocumentoValidator
 {

@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Dayconnect.backoffice": {
+    "DevSecOps.backoffice": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

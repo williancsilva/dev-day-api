@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Dayconnect.backoffice.Mediator.Handles;
+namespace DevSecOps.backoffice.Mediator.Handles;
 
 public class MediatorHandler : IMediatorHandler
 {

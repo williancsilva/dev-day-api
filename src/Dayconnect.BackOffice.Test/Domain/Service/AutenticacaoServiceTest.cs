@@ -1,16 +1,16 @@
 ﻿using Bogus;
-using Dayconnect.backoffice.Domain.Interfaces.ExternalService;
-using Dayconnect.backoffice.Domain.Models.Result;
-using Dayconnect.backoffice.Domain.Models.Signature;
-using Dayconnect.backoffice.Domain.Service;
-using Dayconnect.backoffice.Test.Domain.Fixtures;
+using DevSecOps.backoffice.Domain.Interfaces.ExternalService;
+using DevSecOps.backoffice.Domain.Models.Result;
+using DevSecOps.backoffice.Domain.Models.Signature;
+using DevSecOps.backoffice.Domain.Service;
+using DevSecOps.backoffice.Test.Domain.Fixtures;
 using Moq;
 using Moq.AutoMock;
 using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Dayconnect.backoffice.Test.Domain.Service
+namespace DevSecOps.backoffice.Test.Domain.Service
 {
     [Collection(nameof(ModelsCollection))]
     public class AutenticacaoServiceTest

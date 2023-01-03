@@ -1,10 +1,10 @@
 ﻿using Bogus;
-using Dayconnect.backoffice.App.Dto.Signature;
+using DevSecOps.backoffice.App.Dto.Signature;
 using System.Linq;
 using Xunit;
 using Bogus.Extensions.Brazil;
 
-namespace Dayconnect.backoffice.Test.App.Fixtures;
+namespace DevSecOps.backoffice.Test.App.Fixtures;
 
 [CollectionDefinition(nameof(DtoCollection))]
 public class DtoCollection : ICollectionFixture<DtoFixture>

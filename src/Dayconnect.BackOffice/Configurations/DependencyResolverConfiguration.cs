@@ -1,18 +1,18 @@
-﻿using Dayconnect.backoffice.App;
-using Dayconnect.backoffice.App.Interfaces;
-using Dayconnect.backoffice.App.Notifications;
-using Dayconnect.backoffice.Domain.Interfaces.ExternalService;
-using Dayconnect.backoffice.Domain.Interfaces.Repository;
-using Dayconnect.backoffice.Domain.Interfaces.Service;
-using Dayconnect.backoffice.Domain.Service;
-using Dayconnect.backoffice.ExternalService;
-using Dayconnect.backoffice.Mediator.Events;
-using Dayconnect.backoffice.Mediator.Handles;
-using Dayconnect.backoffice.Mediator.Notifications;
-using Dayconnect.backoffice.Repository;
+﻿using DevSecOps.backoffice.App;
+using DevSecOps.backoffice.App.Interfaces;
+using DevSecOps.backoffice.App.Notifications;
+using DevSecOps.backoffice.Domain.Interfaces.ExternalService;
+using DevSecOps.backoffice.Domain.Interfaces.Repository;
+using DevSecOps.backoffice.Domain.Interfaces.Service;
+using DevSecOps.backoffice.Domain.Service;
+using DevSecOps.backoffice.ExternalService;
+using DevSecOps.backoffice.Mediator.Events;
+using DevSecOps.backoffice.Mediator.Handles;
+using DevSecOps.backoffice.Mediator.Notifications;
+using DevSecOps.backoffice.Repository;
 using MediatR;
 
-namespace Dayconnect.backoffice.Configurations;
+namespace DevSecOps.backoffice.Configurations;
 
 public static class DependencyResolverConfiguration
 {

@@ -1,12 +1,12 @@
-﻿using Dayconnect.backoffice.App.Base;
-using Dayconnect.backoffice.App.Converters;
-using Dayconnect.backoffice.App.Dto.Result;
-using Dayconnect.backoffice.App.Dto.Signature;
-using Dayconnect.backoffice.App.Interfaces;
-using Dayconnect.backoffice.App.Notifications;
-using Dayconnect.backoffice.Domain.Interfaces.Service;
+﻿using DevSecOps.backoffice.App.Base;
+using DevSecOps.backoffice.App.Converters;
+using DevSecOps.backoffice.App.Dto.Result;
+using DevSecOps.backoffice.App.Dto.Signature;
+using DevSecOps.backoffice.App.Interfaces;
+using DevSecOps.backoffice.App.Notifications;
+using DevSecOps.backoffice.Domain.Interfaces.Service;
 
-namespace Dayconnect.backoffice.App;
+namespace DevSecOps.backoffice.App;
 
 public class AutenticacaoApp : ApplicationBase, IAutenticacaoApp
 {

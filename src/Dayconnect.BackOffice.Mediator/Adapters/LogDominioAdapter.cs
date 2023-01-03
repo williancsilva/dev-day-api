@@ -1,7 +1,7 @@
-﻿using Dayconnect.backoffice.Domain.Models;
-using Dayconnect.backoffice.Mediator.Notifications;
+﻿using DevSecOps.backoffice.Domain.Models;
+using DevSecOps.backoffice.Mediator.Notifications;
 
-namespace Dayconnect.backoffice.Mediator.Adapters;
+namespace DevSecOps.backoffice.Mediator.Adapters;
 
 public static class LogDominioAdapter
 {

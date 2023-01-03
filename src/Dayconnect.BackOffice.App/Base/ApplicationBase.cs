@@ -1,7 +1,7 @@
-﻿using Dayconnect.backoffice.App.Dto;
-using Dayconnect.backoffice.App.Notifications;
+﻿using DevSecOps.backoffice.App.Dto;
+using DevSecOps.backoffice.App.Notifications;
 
-namespace Dayconnect.backoffice.App.Base;
+namespace DevSecOps.backoffice.App.Base;
 
 public abstract class ApplicationBase
 {

@@ -1,6 +1,6 @@
 ﻿#nullable disable
 
-namespace Dayconnect.backoffice.Domain.Models.Result;
+namespace DevSecOps.backoffice.Domain.Models.Result;
 
 public class SessaoResult
 {

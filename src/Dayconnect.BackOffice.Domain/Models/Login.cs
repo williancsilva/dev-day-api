@@ -1,4 +1,4 @@
-﻿namespace Dayconnect.backoffice.Domain.Models;
+﻿namespace DevSecOps.backoffice.Domain.Models;
 
 public class Login
 {

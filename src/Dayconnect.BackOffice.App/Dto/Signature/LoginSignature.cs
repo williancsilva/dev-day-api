@@ -1,8 +1,8 @@
-﻿using Dayconnect.backoffice.App.Validators;
+﻿using DevSecOps.backoffice.App.Validators;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Text.Json.Serialization;
 
-namespace Dayconnect.backoffice.App.Dto.Signature;
+namespace DevSecOps.backoffice.App.Dto.Signature;
 
 public class LoginSignature : DtoBase, IDtoContract
 {

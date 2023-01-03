@@ -1,6 +1,6 @@
 ﻿using DayFw.DataAccess;
 
-namespace Dayconnect.backoffice.Repository.Base;
+namespace DevSecOps.backoffice.Repository.Base;
 
 public class DcvDayconnect : BaseRepositoryAdo
 {

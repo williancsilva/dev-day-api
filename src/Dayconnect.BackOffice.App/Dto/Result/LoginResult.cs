@@ -1,4 +1,4 @@
-﻿namespace Dayconnect.backoffice.App.Dto.Result;
+﻿namespace DevSecOps.backoffice.App.Dto.Result;
 
 public class LoginResult
 {

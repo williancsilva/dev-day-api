@@ -1,12 +1,12 @@
 ﻿using Bogus;
 using Bogus.Extensions.Brazil;
-using Dayconnect.backoffice.Domain.Models;
-using Dayconnect.backoffice.Test.Domain.Fixtures;
+using DevSecOps.backoffice.Domain.Models;
+using DevSecOps.backoffice.Test.Domain.Fixtures;
 using System;
 using System.Linq;
 using Xunit;
 
-namespace Dayconnect.backoffice.Test.Domain.Models;
+namespace DevSecOps.backoffice.Test.Domain.Models;
 
 [Collection(nameof(ModelsCollection))]
 public class ClienteTest

@@ -1,4 +1,4 @@
-﻿namespace Dayconnect.backoffice.LogHelper;
+﻿namespace DevSecOps.backoffice.LogHelper;
 
 public class ServiceLog
 {

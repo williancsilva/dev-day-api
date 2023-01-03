@@ -1,11 +1,11 @@
 ﻿using Bogus;
-using Dayconnect.backoffice.Domain.Models.Signature;
-using Dayconnect.backoffice.Test.Domain.Fixtures;
+using DevSecOps.backoffice.Domain.Models.Signature;
+using DevSecOps.backoffice.Test.Domain.Fixtures;
 using System;
 using System.Linq;
 using Xunit;
 
-namespace Dayconnect.backoffice.Test.Domain.Models;
+namespace DevSecOps.backoffice.Test.Domain.Models;
 
 [Collection(nameof(ModelsCollection))]
 public class AutenticarUsuarioSignatureTest

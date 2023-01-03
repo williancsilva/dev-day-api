@@ -2,7 +2,7 @@
 using FluentValidation.Results;
 using System.Text.Json.Serialization;
 
-namespace Dayconnect.backoffice.App.Dto;
+namespace DevSecOps.backoffice.App.Dto;
 
 public class DtoBase
 {

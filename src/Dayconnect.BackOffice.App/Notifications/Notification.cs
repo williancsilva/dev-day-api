@@ -1,4 +1,4 @@
-﻿namespace Dayconnect.backoffice.App.Notifications;
+﻿namespace DevSecOps.backoffice.App.Notifications;
 
 public class Notification
 {

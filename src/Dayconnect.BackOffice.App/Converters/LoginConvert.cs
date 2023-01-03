@@ -1,7 +1,7 @@
-﻿using Dayconnect.backoffice.App.Dto.Result;
-using Dayconnect.backoffice.Domain.Models;
+﻿using DevSecOps.backoffice.App.Dto.Result;
+using DevSecOps.backoffice.Domain.Models;
 
-namespace Dayconnect.backoffice.App.Converters;
+namespace DevSecOps.backoffice.App.Converters;
 
 public static class LoginConvert
 {

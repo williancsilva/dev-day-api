@@ -1,4 +1,4 @@
-﻿namespace Dayconnect.backoffice.Domain.Models.Signature;
+﻿namespace DevSecOps.backoffice.Domain.Models.Signature;
 
 public class CriarSessaoSignature
 {

@@ -1,7 +1,7 @@
-﻿using Dayconnect.backoffice.App.Dto.Result;
-using Dayconnect.backoffice.App.Dto.Signature;
+﻿using DevSecOps.backoffice.App.Dto.Result;
+using DevSecOps.backoffice.App.Dto.Signature;
 
-namespace Dayconnect.backoffice.App.Interfaces;
+namespace DevSecOps.backoffice.App.Interfaces;
 
 public interface IClienteApp
 {

@@ -1,12 +1,12 @@
-﻿using Dayconnect.backoffice.Domain.Interfaces.ExternalService;
-using Dayconnect.backoffice.Domain.Models.Result;
-using Dayconnect.backoffice.Domain.Models.Signature;
+﻿using DevSecOps.backoffice.Domain.Interfaces.ExternalService;
+using DevSecOps.backoffice.Domain.Models.Result;
+using DevSecOps.backoffice.Domain.Models.Signature;
 using System.Text;
 using System.Text.Json;
 
 #nullable disable
 
-namespace Dayconnect.backoffice.ExternalService;
+namespace DevSecOps.backoffice.ExternalService;
 
 public class AccessControlSession : IAccessControlSession
 {
