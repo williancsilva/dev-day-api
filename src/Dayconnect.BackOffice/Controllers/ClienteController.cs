@@ -34,15 +34,15 @@ public class ClienteController : ControllerBase
     }
 
     [HttpPost]
-    [Route(nameof(InativaCliente))]
-    [SwaggerOperation("Inativa o cliente Dayconnect")]
+    [Route(nameof(BloquearCliente))]
+    [SwaggerOperation("Bloquea o cliente")]
     [ProducesResponseType((int) HttpStatusCode.OK)]
     [Authorize(Roles = "bloquear")]
     [AcoesFilterAttribute]
-    public async Task<IActionResult> InativaCliente(
-        [FromBody, SwaggerRequestBody("A signature para inativar o cliente", Required = true)] InativarClienteSignature signature)
+    public async Task<IActionResult> BloquearCliente(
+        [FromBody, SwaggerRequestBody("A signature para bloquear o cliente", Required = true)] InativarClienteSignature signature)
     {
         await _app.InativarCliente(signature);
-        return Ok("Cliente inativado com sucesso!");
+        return Ok("Cliente bloqueado com sucesso!");
     }
 }
