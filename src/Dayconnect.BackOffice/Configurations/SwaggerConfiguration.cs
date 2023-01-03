@@ -30,12 +30,12 @@ public static class SwaggerConfiguration
             c.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
-                Title = "Daycoval backoffice",
-                Description = "Web API para gerenciar os clientes do Dayconnect pela backoffice",
+                Title = "DevSecOps BackOffice",
+                Description = "Web API para para laboratório DevSecOps",
                 TermsOfService = new Uri("https://bitbucket.daycoval.dev.br/projects/DBE/repos/dotnet.webapi.backofficecliente/browse"),
                 Contact = new OpenApiContact
                 {
-                    Name = "Dayconnect - Projetos",
+                    Name = "DevSecOps",
                     Email = "desenv@bancodaycoval.com.br",
                     Url = new Uri("https://bitbucket.daycoval.dev.br/projects/DBE/repos/dotnet.webapi.backofficecliente/browse"),
                 },

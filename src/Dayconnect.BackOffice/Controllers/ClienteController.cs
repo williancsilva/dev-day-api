@@ -23,11 +23,11 @@ public class ClienteController : ControllerBase
 
     [HttpPost]
     [Route(nameof(ObterDadosCliente))]
-    [SwaggerOperation("Obtem informa��es do cliente")]
+    [SwaggerOperation("Obtem informações do cliente")]
     [ProducesResponseType(typeof(ObterDadosClienteResult), (int) HttpStatusCode.OK)]
     [Authorize(Roles = "consultar")]
     [AcoesFilterAttribute]
-    public async Task<IActionResult> ObterDadosCliente([SwaggerRequestBody("A signature para obter o cliente Dayconnect", Required = true)] ObterDadosClienteSignature signature)
+    public async Task<IActionResult> ObterDadosCliente([SwaggerRequestBody("A signature para obter o cliente", Required = true)] ObterDadosClienteSignature signature)
     {
         var result = await _app.ObterDadosCliente(signature);
         return Ok(result);
@@ -40,7 +40,7 @@ public class ClienteController : ControllerBase
     [Authorize(Roles = "bloquear")]
     [AcoesFilterAttribute]
     public async Task<IActionResult> InativaCliente(
-        [FromBody, SwaggerRequestBody("A signature para inativar o cliente Dayconnect", Required = true)] InativarClienteSignature signature)
+        [FromBody, SwaggerRequestBody("A signature para inativar o cliente", Required = true)] InativarClienteSignature signature)
     {
         await _app.InativarCliente(signature);
         return Ok("Cliente inativado com sucesso!");
