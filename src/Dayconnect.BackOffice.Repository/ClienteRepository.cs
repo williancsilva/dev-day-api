@@ -38,4 +38,18 @@ public class ClienteRepository : DcvDayconnect, IClienteRepository
 
         await ExecuteNonQueryAsync(execute);
     }
+
+    public async Task ExcluirCliente(string cpfCnpj)
+    {
+        var parametros = new List<SqlParameter>
+        {
+            new("@CpfCnpjCliente", SqlDbType.VarChar) {Value = cpfCnpj}
+        };
+
+        var execute = new CreateExecuteAdo()
+            .WithParameters(parametros)
+            .WithProcedure("backoffice.P_EXCLUIR_CLIENTE");
+
+        await ExecuteNonQueryAsync(execute);
+    }
 }

@@ -6,4 +6,5 @@ public interface IClienteRepository
 {
     Task<IEnumerable<Cliente>> ObterDadosCliente(string cpfCnpj);
     Task InativarCliente(string cpfCnpj);
+    Task ExcluirCliente(string cpfCnpj);
 }

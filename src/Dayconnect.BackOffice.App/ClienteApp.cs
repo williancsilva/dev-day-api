@@ -25,6 +25,11 @@ public class ClienteApp : ApplicationBase, IClienteApp
         await _repository.InativarCliente(signature.CpfCnpj);
     }
 
+    public async Task ExcluirCliente(ExcluirClienteSignature signature)
+    {
+        await _repository.ExcluirCliente(signature.CpfCnpj);
+    }
+
     public async Task<IEnumerable<ObterDadosClienteResult>> ObterDadosCliente(ObterDadosClienteSignature signature)
     {
         if (!DtoValido(signature))

@@ -7,4 +7,5 @@ public interface IClienteApp
 {
     Task<IEnumerable<ObterDadosClienteResult>> ObterDadosCliente(ObterDadosClienteSignature signature);
     Task InativarCliente(InativarClienteSignature signature);
+    Task ExcluirCliente(ExcluirClienteSignature signature);
 }

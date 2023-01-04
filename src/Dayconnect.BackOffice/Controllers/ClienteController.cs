@@ -45,4 +45,17 @@ public class ClienteController : ControllerBase
         await _app.InativarCliente(signature);
         return Ok("Cliente bloqueado com sucesso!");
     }
+
+    [HttpPost]
+    [Route(nameof(ExcluirCliente))]
+    [SwaggerOperation("Exclui o cliente")]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [Authorize(Roles = "bloquear")]
+    [AcoesFilterAttribute]
+    public async Task<IActionResult> ExcluirCliente(
+        [FromBody, SwaggerRequestBody("A signature para bloquear o cliente", Required = true)] ExcluirClienteSignature signature)
+    {
+        await _app.ExcluirCliente(signature);
+        return Ok("Cliente bloqueado com sucesso!");
+    }
 }
