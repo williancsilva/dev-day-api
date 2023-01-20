@@ -2,7 +2,7 @@
 
 public class CriarSessaoSignature
 {
-    public int CodSistema => 353;
+    public int CodSistema => 439;
     public int CodTipoDispositivo => 1;
     public int Expiration => 20;
     public string Login { get; }

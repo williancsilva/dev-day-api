@@ -26,7 +26,6 @@ public class ClienteController : ControllerBase
     [SwaggerOperation("Obtem informações do cliente")]
     [ProducesResponseType(typeof(ObterDadosClienteResult), (int) HttpStatusCode.OK)]
     [Authorize(Roles = "consultar")]
-    [AcoesFilterAttribute]
     public async Task<IActionResult> ObterDadosCliente([SwaggerRequestBody("A signature para obter o cliente", Required = true)] ObterDadosClienteSignature signature)
     {
         var result = await _app.ObterDadosCliente(signature);
@@ -37,8 +36,7 @@ public class ClienteController : ControllerBase
     [Route(nameof(BloquearCliente))]
     [SwaggerOperation("Bloquea o cliente")]
     [ProducesResponseType((int) HttpStatusCode.OK)]
-    [Authorize(Roles = "bloquear")]
-    [AcoesFilterAttribute]
+    [Authorize(Roles = "inativar")]
     public async Task<IActionResult> BloquearCliente(
         [FromBody, SwaggerRequestBody("A signature para bloquear o cliente", Required = true)] InativarClienteSignature signature)
     {
@@ -50,12 +48,11 @@ public class ClienteController : ControllerBase
     [Route(nameof(ExcluirCliente))]
     [SwaggerOperation("Exclui o cliente")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
-    [Authorize(Roles = "bloquear")]
-    [AcoesFilterAttribute]
+    [Authorize(Roles = "excluir")]
     public async Task<IActionResult> ExcluirCliente(
-        [FromBody, SwaggerRequestBody("A signature para bloquear o cliente", Required = true)] ExcluirClienteSignature signature)
+        [FromBody, SwaggerRequestBody("A signature para excluir o cliente", Required = true)] ExcluirClienteSignature signature)
     {
         await _app.ExcluirCliente(signature);
-        return Ok("Cliente bloqueado com sucesso!");
+        return Ok("Cliente excluído com sucesso!");
     }
 }

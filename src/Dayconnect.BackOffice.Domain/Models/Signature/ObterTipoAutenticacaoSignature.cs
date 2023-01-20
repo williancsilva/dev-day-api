@@ -4,7 +4,7 @@
     {
         public ObterTipoAutenticacaoSignature(string _login)
         {
-            CodSistema = 353;
+            CodSistema = 439;
             Login = _login;
             Validar();
         }

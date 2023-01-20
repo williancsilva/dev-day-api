@@ -34,7 +34,7 @@ public class LoginTest
     [InlineData(true, true)]
     public void DeveEstarLogado(bool? autenticado, bool? habilitado)
     {
-        var id = $"353_{Guid.NewGuid()}";
+        var id = $"439_{Guid.NewGuid()}";
         var login = new Login(id, autenticado, habilitado);
         Assert.True(login.Logado);
     }
@@ -46,7 +46,7 @@ public class LoginTest
     [InlineData(false, false)]
     public void DeveNaoEstarLogado(bool? autenticado, bool? habilitado)
     {
-        var id = $"353_{Guid.NewGuid()}";
+        var id = $"439_{Guid.NewGuid()}";
         var login = new Login(id, autenticado, habilitado);
         Assert.False(login.Logado);
     }

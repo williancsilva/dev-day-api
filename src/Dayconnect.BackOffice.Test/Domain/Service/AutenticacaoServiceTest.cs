@@ -34,7 +34,7 @@ namespace DevSecOps.backoffice.Test.Domain.Service
             var ip = _faker.Internet.Ip();
             var deviceId = _faker.Random.Word();
             var versaoDispositivo = _faker.Random.Number(10, 30).ToString();
-            var sessionId = $"353_{Guid.NewGuid()}";
+            var sessionId = $"439_{Guid.NewGuid()}";
             var tipoAutenticacao = 9;
 
             var autenticarUsuarioResult = new AutenticarUsuarioResult()
@@ -70,7 +70,7 @@ namespace DevSecOps.backoffice.Test.Domain.Service
             var ip = _faker.Internet.Ip();
             var deviceId = _faker.Random.Word();
             var versaoDispositivo = _faker.Random.Number(10, 30).ToString();
-            var sessionId = $"353_{Guid.NewGuid()}";
+            var sessionId = $"439_{Guid.NewGuid()}";
             var tipoAutenticacao = 0;
 
             proxy.Setup(x => x.ObterTipoAutenticacao(It.IsAny<ObterTipoAutenticacaoSignature>())).ReturnsAsync(tipoAutenticacao);

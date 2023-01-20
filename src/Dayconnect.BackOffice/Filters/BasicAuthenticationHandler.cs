@@ -12,7 +12,7 @@ namespace DevSecOps.backoffice.Filters;
 public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
     private readonly IAccessControlSession _accessControl;
-    private const int CodSistema = 353;
+    private const int CodSistema = 439;
 
     public BasicAuthenticationHandler(
         IOptionsMonitor<AuthenticationSchemeOptions> options,
