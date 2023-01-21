@@ -4,16 +4,13 @@ using System.Runtime.CompilerServices;
 using DevSecOps.backoffice.Domain.Interfaces.Repository;
 using DevSecOps.backoffice.Domain.Models;
 using DevSecOps.backoffice.Repository.Mappers;
+using DevSecOps.BackOffice.Domain.Interfaces.Repository;
 
 namespace DevSecOps.backoffice.Repository;
 
-public class ClienteRepository : IClienteRepository
+public class AutenticacaoRepository : IAutenticacaoRepository
 {
     readonly string connString = "Server=(localdb)\\MSSQLLocalDB;Database=DCV_DEVDAY;Integrated Security=SSPI;";
-    //(local)
-    //string str = "Data Source=(local);Initial Catalog=Northwind;Integrated Security=SSPI";
-    //DESKTOP-AUHSRO6\Administrador
-    //Servidor: DESKTOP-AUHSRO6\LOCALDB#C9814F24
 
     public async Task<IEnumerable<Cliente>> ObterDadosCliente(string cpfCnpj)
     {
@@ -38,17 +35,20 @@ public class ClienteRepository : IClienteRepository
         }
     }
 
-    public async Task InativarCliente(string cpfCnpj)
+    public async Task<string> CriarSessao(string email)
     {
         using (SqlConnection con = new SqlConnection(connString))
         {
-            using (SqlCommand cmd = new SqlCommand("P_INATIVAR_CLIENTE", con))
+            using (SqlCommand cmd = new SqlCommand("P_INCLUIR_SESSAO", con))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@documento", SqlDbType.VarChar, 11).Value = cpfCnpj;
+                cmd.Parameters.Add("@login", SqlDbType.VarChar).Value = email;
 
                 await con.OpenAsync();
-                await cmd.ExecuteNonQueryAsync();
+                var reader = await cmd.ExecuteReaderAsync();
+
+                return reader.GetString(reader.GetOrdinal("DayId"));
+;
             }
         }
     }

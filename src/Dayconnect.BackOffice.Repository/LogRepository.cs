@@ -1,31 +1,33 @@
 ﻿using DevSecOps.backoffice.Domain.Interfaces.Repository;
 using DevSecOps.backoffice.Domain.Models;
-using DevSecOps.backoffice.Repository.Base;
-using DayFw.DataAccess;
-using DayFw.DataAccess.Extension.Ado;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace DevSecOps.backoffice.Repository;
 
-public class LogRepository : DcvDayconnect, ILogRepository
+public class LogRepository : ILogRepository
 {
+    readonly string connString = "Server=(localdb)\\MSSQLLocalDB;Database=DCV_DEVDAY;Integrated Security=SSPI;";
+
     public async Task InserirLog(LogDominio signature)
     {
-        var parametros = new List<SqlParameter>
+        using (SqlConnection con = new SqlConnection(connString))
         {
-            new("@ip", SqlDbType.VarChar, 16) {Value = signature.Ip},
-            new("@login", SqlDbType.VarChar, 150) {Value = signature.LoginOperador},
-            new("@url", SqlDbType.VarChar, 150) {Value = signature.Url},
-            new("@dataRegistro", SqlDbType.DateTime) {Value = signature.DataRegistro},
-            new("@documento", SqlDbType.VarChar, 14) {Value = signature.cpfCnpjCliente},
-            new("@metodo", SqlDbType.VarChar, 80) {Value = signature.Metodo}
-        };
+            using (SqlCommand cmd = new SqlCommand("backoffice.P_INCLUIR_LOG", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
 
-        var execute = new CreateExecuteAdo()
-            .WithParameters(parametros)
-            .WithProcedure("backoffice.P_INCLUIR_LOG");
 
-        await ExecuteNonQueryAsync(execute);
+                cmd.Parameters.Add("@ip", SqlDbType.VarChar, 16).Value = signature.Ip;
+                cmd.Parameters.Add("@login", SqlDbType.VarChar, 150).Value = signature.LoginOperador;
+                cmd.Parameters.Add("@url", SqlDbType.VarChar, 150).Value = signature.Url;
+                cmd.Parameters.Add("@dataRegistro", SqlDbType.DateTime).Value = signature.DataRegistro;
+                cmd.Parameters.Add("@documento", SqlDbType.VarChar, 14).Value = signature.cpfCnpjCliente;
+                cmd.Parameters.Add("@metodo", SqlDbType.VarChar, 80).Value = signature.Metodo;
+
+                await con.OpenAsync();
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
     }
 }

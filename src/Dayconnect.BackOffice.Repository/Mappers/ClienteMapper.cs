@@ -1,16 +1,16 @@
 ﻿using DevSecOps.backoffice.Domain.Models;
-using DayFw.DataAccess.Helpers;
 using System.Data;
+using System;
 
 namespace DevSecOps.backoffice.Repository.Mappers;
 
 public static class ClienteMapper
 {
-    public static Cliente Convert(IDataReader dReader, string nomeProcedure)
+    public static Cliente Convert(IDataReader dReader)
     {
-        var nome = ConverterHelper.ConvertToString(dReader, "NomeCartao", nomeProcedure);
-        var cpfCnpj = ConverterHelper.ConvertToString(dReader, "CpfCnpjCliente", nomeProcedure);
-        var ativo = ConverterHelper.ConvertToBoolean(dReader, "Ativo", nomeProcedure);
+        var nome = dReader["nome"] as string;
+        var cpfCnpj = dReader["documento"] as string;
+        bool ativo = (bool)dReader["Ativo"];
 
         return new Cliente(nome, cpfCnpj, ativo);
     }

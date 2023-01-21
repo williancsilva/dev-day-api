@@ -25,7 +25,8 @@ public class ClienteController : ControllerBase
     [Route(nameof(ObterDadosCliente))]
     [SwaggerOperation("Obtem informações do cliente")]
     [ProducesResponseType(typeof(ObterDadosClienteResult), (int) HttpStatusCode.OK)]
-    [Authorize(Roles = "consultar")]
+    // [Authorize(Roles = "consultar")]
+    [AllowAnonymous]
     public async Task<IActionResult> ObterDadosCliente([SwaggerRequestBody("A signature para obter o cliente", Required = true)] ObterDadosClienteSignature signature)
     {
         var result = await _app.ObterDadosCliente(signature);
