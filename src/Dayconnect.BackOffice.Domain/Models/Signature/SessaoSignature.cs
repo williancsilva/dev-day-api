@@ -2,11 +2,11 @@
 
 public class SessaoSignature
 {
-    public string SessionId { get; }
+    public int SessionId { get; }
     public int Expiration { get; }
     public bool IsValid { get; private set; }
 
-    public SessaoSignature(string sessionId)
+    public SessaoSignature(int sessionId)
     {
         SessionId = sessionId;
         Expiration = 20;
@@ -15,8 +15,8 @@ public class SessaoSignature
 
     private void Validar()
     {
-        if (string.IsNullOrWhiteSpace(SessionId))
-            throw new ArgumentNullException(SessionId,"SessionId obrigatório");
+        if (SessionId <= 0)
+            throw new ArgumentNullException(SessionId.ToString(),"SessionId obrigatório");
 
         IsValid = true;
     }

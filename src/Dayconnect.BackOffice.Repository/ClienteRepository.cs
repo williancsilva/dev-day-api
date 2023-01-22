@@ -1,6 +1,5 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.CompilerServices;
 using DevSecOps.backoffice.Domain.Interfaces.Repository;
 using DevSecOps.backoffice.Domain.Models;
 using DevSecOps.backoffice.Repository.Mappers;
@@ -10,10 +9,6 @@ namespace DevSecOps.backoffice.Repository;
 public class ClienteRepository : IClienteRepository
 {
     readonly string connString = "Server=(localdb)\\MSSQLLocalDB;Database=DCV_DEVDAY;Integrated Security=SSPI;";
-    //(local)
-    //string str = "Data Source=(local);Initial Catalog=Northwind;Integrated Security=SSPI";
-    //DESKTOP-AUHSRO6\Administrador
-    //Servidor: DESKTOP-AUHSRO6\LOCALDB#C9814F24
 
     public async Task<IEnumerable<Cliente>> ObterDadosCliente(string cpfCnpj)
     {

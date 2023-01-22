@@ -10,6 +10,7 @@ using DevSecOps.backoffice.Mediator.Events;
 using DevSecOps.backoffice.Mediator.Handles;
 using DevSecOps.backoffice.Mediator.Notifications;
 using DevSecOps.backoffice.Repository;
+using DevSecOps.BackOffice.Domain.Interfaces.Repository;
 using MediatR;
 
 namespace DevSecOps.backoffice.Configurations;
@@ -46,6 +47,7 @@ public static class DependencyResolverConfiguration
     private static void RegisterRepositorys(IServiceCollection services)
     {
         services.AddScoped<IClienteRepository, ClienteRepository>();
+        services.AddScoped<IAutenticacaoRepository, AutenticacaoRepository>();
         services.AddScoped<ILogRepository, LogRepository>();
     }
 }

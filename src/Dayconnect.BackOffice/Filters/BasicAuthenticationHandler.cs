@@ -39,14 +39,14 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
         try
         {
             Request.Headers.TryGetValue("dayId", out var sessionId);
-            result = await _accessControl.ObterSessao(new SessaoSignature(sessionId.ToString()));
+            result = await _accessControl.ObterSessao(new SessaoSignature(Convert.ToInt32(sessionId)));
         }
         catch
         {
             return AuthenticateResult.Fail("Header de autorização inválido");
         }
 
-        if (result == null || result.IsAuthenticated == false || result.CodSistema != CodSistema)
+        if (result == null || result.IsAuthenticated == false)
             return AuthenticateResult.Fail("Autenticação Inválida");
 
         Context.Items["UserSession"] = result;

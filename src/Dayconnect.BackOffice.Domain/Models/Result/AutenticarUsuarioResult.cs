@@ -2,6 +2,12 @@
 
 public class AutenticarUsuarioResult
 {
-    public bool Autenticado { get; set; }
-    public bool LoginHabilitado { get; set; }
+    public bool Autenticado { get; private set; }
+    public bool LoginHabilitado { get; private set; }
+
+    public void AutenticarUsuario()
+    {
+        Autenticado = true;
+        LoginHabilitado = true;
+    }
 }

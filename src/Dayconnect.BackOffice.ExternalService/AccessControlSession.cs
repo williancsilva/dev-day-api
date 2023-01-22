@@ -1,6 +1,7 @@
 ﻿using DevSecOps.backoffice.Domain.Interfaces.ExternalService;
 using DevSecOps.backoffice.Domain.Models.Result;
 using DevSecOps.backoffice.Domain.Models.Signature;
+using DevSecOps.BackOffice.Domain.Interfaces.Repository;
 using System.Text;
 using System.Text.Json;
 
@@ -10,42 +11,29 @@ namespace DevSecOps.backoffice.ExternalService;
 
 public class AccessControlSession : IAccessControlSession
 {
-    private HttpClient Http { get; }
+    private readonly IAutenticacaoRepository _autenticacaoRepository;
 
-    public AccessControlSession(HttpClient http)
+    public AccessControlSession(IAutenticacaoRepository autenticacaoRepository)
     {
-        Http = http;
+        _autenticacaoRepository = autenticacaoRepository;
     }
 
     public async Task<SessaoResult> ObterSessao(SessaoSignature signature)
     {
-        var response = await Http.GetAsync($"{Http.BaseAddress}/Session/?sessionId={signature.SessionId}&expiration={signature.Expiration}");
-        if (!response.IsSuccessStatusCode) return null;
-        var json = await response.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<SessaoResult>(json);
-    }
-
-    public async Task<string> CriarSessao(CriarSessaoSignature signature)
-    {
-        var response = await Http.PostAsync($"{Http.BaseAddress}Session", new StringContent(JsonSerializer.Serialize(signature), Encoding.UTF8, "application/json"));
-        response.EnsureSuccessStatusCode();
-        var content = await response.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<string>(content);
+        return await _autenticacaoRepository.ObterSessao(signature.SessionId);
     }
 
     public async Task<AutenticarUsuarioResult> AutenticarUsuario(AutenticarUsuarioSignature signature)
     {
-        var response = await Http.PostAsync($"{Http.BaseAddress}Security/AutenticarUsuario", new StringContent(JsonSerializer.Serialize(signature), Encoding.UTF8, "text/json"));
-        response.EnsureSuccessStatusCode();
-        var content = await response.Content.ReadAsStringAsync();
-        return JsonSerializer.Deserialize<AutenticarUsuarioResult>(content);
-    }
-    public async Task<int> ObterTipoAutenticacao(ObterTipoAutenticacaoSignature signature)
-    {
-        var response = await Http.PostAsync($"{Http.BaseAddress}Security/SelecionarUsuario", new StringContent(JsonSerializer.Serialize(signature), Encoding.UTF8, "text/json"));
-        response.EnsureSuccessStatusCode();
-        var content = await response.Content.ReadAsStringAsync();
-        var model = JsonSerializer.Deserialize<ObterTipoAutenticacaoResult>(content);
-        return model != null ? model.MutiploFatorAutenticacao.FirstOrDefault().TipoAutenticacao : 0;
+        var sessao = await _autenticacaoRepository.ObterSessao(signature.SessionId);
+        var autenticacaoUsuario = new AutenticarUsuarioResult();
+
+        if (sessao != null && sessao.Senha == signature.Senha)
+        {
+            autenticacaoUsuario.AutenticarUsuario();
+            await _autenticacaoRepository.AtualizarSessao(signature.SessionId);
+        }
+
+        return autenticacaoUsuario;
     }
 }
