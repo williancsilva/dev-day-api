@@ -9,7 +9,7 @@ public static class SessaoMapper
 {
     public static SessaoResult Convert(IDataReader dReader)
     {
-        var id = (string)dReader["id"];
+        var id = (int)dReader["id"];
         var isAuthenticated = (bool)dReader["isAuthenticated"];
         var login = dReader["login"] as string;
         var dataExpiracao = (DateTime)dReader["Expiracao"];

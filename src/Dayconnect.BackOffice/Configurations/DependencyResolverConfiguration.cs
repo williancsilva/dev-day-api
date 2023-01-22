@@ -1,11 +1,9 @@
 ﻿using DevSecOps.backoffice.App;
 using DevSecOps.backoffice.App.Interfaces;
 using DevSecOps.backoffice.App.Notifications;
-using DevSecOps.backoffice.Domain.Interfaces.ExternalService;
 using DevSecOps.backoffice.Domain.Interfaces.Repository;
 using DevSecOps.backoffice.Domain.Interfaces.Service;
 using DevSecOps.backoffice.Domain.Service;
-using DevSecOps.backoffice.ExternalService;
 using DevSecOps.backoffice.Mediator.Events;
 using DevSecOps.backoffice.Mediator.Handles;
 using DevSecOps.backoffice.Mediator.Notifications;
@@ -40,7 +38,6 @@ public static class DependencyResolverConfiguration
 
     private static void RegisterExternalServices(IServiceCollection services)
     {
-        services.AddScoped<IAccessControlSession, AccessControlSession>();
         services.AddScoped<IAutenticacaoService, AutenticacaoService>();
     }
 

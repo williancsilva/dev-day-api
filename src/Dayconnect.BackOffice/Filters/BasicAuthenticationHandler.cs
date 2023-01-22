@@ -1,4 +1,4 @@
-﻿using DevSecOps.backoffice.Domain.Interfaces.ExternalService;
+﻿using DevSecOps.backoffice.Domain.Interfaces.Service;
 using DevSecOps.backoffice.Domain.Models.Result;
 using DevSecOps.backoffice.Domain.Models.Signature;
 using Microsoft.AspNetCore.Authentication;
@@ -11,18 +11,17 @@ namespace DevSecOps.backoffice.Filters;
 
 public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
-    private readonly IAccessControlSession _accessControl;
-    private const int CodSistema = 439;
+    private readonly IAutenticacaoService _autenticacaoService;
 
     public BasicAuthenticationHandler(
         IOptionsMonitor<AuthenticationSchemeOptions> options,
         ILoggerFactory logger,
         UrlEncoder encoder,
         ISystemClock clock,
-        IAccessControlSession accessControl)
+        IAutenticacaoService autenticacaoService)
         : base(options, logger, encoder, clock)
     {
-        _accessControl = accessControl;
+        _autenticacaoService = autenticacaoService;
     }
 
     protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -39,7 +38,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
         try
         {
             Request.Headers.TryGetValue("dayId", out var sessionId);
-            result = await _accessControl.ObterSessao(new SessaoSignature(Convert.ToInt32(sessionId)));
+            result = await _autenticacaoService.ObterSessao(new SessaoSignature(Convert.ToInt32(sessionId)));
         }
         catch
         {
@@ -53,7 +52,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
 
         var claimsUser = new List<Claim>
         {
-            new(ClaimTypes.NameIdentifier, result.Id ?? string.Empty)
+            new(ClaimTypes.NameIdentifier, result.Id.ToString() ?? string.Empty)
         };
 
         if (result.Permission.Features != null)

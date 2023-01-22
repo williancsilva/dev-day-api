@@ -10,7 +10,7 @@ public class AutenticacaoRepository : IAutenticacaoRepository
 {
     readonly string connString = "Server=(localdb)\\MSSQLLocalDB;Database=DCV_DEVDAY;Integrated Security=SSPI;";
 
-    public async Task<SessaoResult?> ObterSessao(int dayId)
+    public async Task<SessaoResult> ObterSessao(int dayId)
     {
         using (SqlConnection con = new SqlConnection(connString))
         {
@@ -27,7 +27,7 @@ public class AutenticacaoRepository : IAutenticacaoRepository
                     {
                         listaCliente.Add(SessaoMapper.Convert(reader));
                     }
-                    return listaCliente?.FirstOrDefault();
+                    return listaCliente?.FirstOrDefault() ?? new SessaoResult();
                 }
             }
         }
@@ -43,10 +43,9 @@ public class AutenticacaoRepository : IAutenticacaoRepository
                 cmd.Parameters.Add("@login", SqlDbType.VarChar).Value = email;
 
                 await con.OpenAsync();
-                var reader = await cmd.ExecuteReaderAsync();
 
-                return reader.GetInt32(reader.GetOrdinal("DayId"));
-;
+                var dayId = await cmd.ExecuteScalarAsync();
+                return dayId != null ? (int)dayId : 0;
             }
         }
     }

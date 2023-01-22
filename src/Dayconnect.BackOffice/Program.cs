@@ -27,8 +27,6 @@ builder.Services.AddCors(cors =>
 
 builder.Services.IntegrateDependencyResolver();
 
-builder.Services.IntegrateAcessControl(endPointAccessControl);
-
 builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthenticationHandler", null);
 
 //builder.Services.AddAuthorization(options => { options.AddPolicy("Operar", policy => policy.RequireClaim("Operadores", new string[] { "consultar", "bloquear" })); });

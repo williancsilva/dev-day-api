@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Dayconnect.BackOffice.App\DevSecOps.BackOffice.App.csproj" />
     <ProjectReference Include="..\Dayconnect.BackOffice.Domain\DevSecOps.BackOffice.Domain.csproj" />
-    <ProjectReference Include="..\Dayconnect.BackOffice.ExternalService\DevSecOps.BackOffice.ExternalService.csproj" />
     <ProjectReference Include="..\Dayconnect.BackOffice.Mediator\DevSecOps.BackOffice.Mediator.csproj" />
     <ProjectReference Include="..\Dayconnect.BackOffice.Repository\DevSecOps.BackOffice.Repository.csproj" />
   </ItemGroup>
