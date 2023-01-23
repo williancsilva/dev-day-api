@@ -20,7 +20,7 @@ public class AutenticacaoService : IAutenticacaoService
         var sessionId = await _repository.CriarSessao(login);
         var result = await AutenticarUsuario(new AutenticarUsuarioSignature(sessionId, login, senha));
 
-        return new Login(sessionId, result?.Autenticado, true);
+        return new Login(sessionId, result?.Autenticado, true, result?.Permissoes);
     }
 
     public async Task<SessaoResult> ObterSessao(SessaoSignature signature)
@@ -35,8 +35,9 @@ public class AutenticacaoService : IAutenticacaoService
 
         if (sessao != null && sessao.Senha == signature.Senha)
         {
-            autenticacaoUsuario.AutenticarUsuario();
+            autenticacaoUsuario.AutenticarUsuario(sessao.Permission);
             await _repository.AtualizarSessao(signature.SessionId);
+
         }
 
         return autenticacaoUsuario;

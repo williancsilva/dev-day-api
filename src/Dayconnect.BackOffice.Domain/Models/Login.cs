@@ -1,4 +1,6 @@
-﻿namespace DevSecOps.backoffice.Domain.Models;
+﻿using DevSecOps.backoffice.Domain.Models.Result;
+
+namespace DevSecOps.backoffice.Domain.Models;
 
 public class Login
 {
@@ -7,13 +9,15 @@ public class Login
     public bool? Habilitado { get; }
     public bool Logado => Autenticado.HasValue && Habilitado.HasValue && Autenticado.Value && Habilitado.Value;
     public bool IsValid { get; private set; }
+    public Permission Permissoes { get; set; }
 
-    public Login(int id, bool? autenticado, bool? habilitado)
+    public Login(int id, bool? autenticado, bool? habilitado, Permission? permissoes)
     {
         Id = id;
         Autenticado = autenticado;
         Habilitado = habilitado;
         Validar();
+        Permissoes = permissoes;
     }
 
     private void Validar()
