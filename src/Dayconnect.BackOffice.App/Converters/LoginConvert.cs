@@ -13,7 +13,8 @@ public static class LoginConvert
         {
             DayId = result.Id,
             Logado = result.Logado,
-            Permissoes = result.Permissoes
+            Permissoes = result.Permissoes,
+            Senha = result.Senha
         };
     }
 }

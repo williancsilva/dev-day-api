@@ -11,7 +11,10 @@ public static class ClienteConvert
         {
             Nome = x.Nome,
             CpfCnpj = x.CpfCnpj,
-            Ativo = x.Ativo
+            Ativo = x.Ativo,
+            Endereco= x.Endereco,
+            Excluido= x.Excluido,
+            Telefone = x.Telefone
         });
     }
 }
