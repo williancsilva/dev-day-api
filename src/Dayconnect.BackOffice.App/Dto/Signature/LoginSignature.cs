@@ -4,6 +4,11 @@ using System.Text.Json.Serialization;
 
 namespace DevSecOps.backoffice.App.Dto.Signature;
 
+public class LogoffSignature : DtoBase
+{
+    public int DayId { get; set; }
+
+}
 public class LoginSignature : DtoBase, IDtoContract
 {
     [SwaggerSchema("Email cadastrado para efetuar o login", Nullable = false)]

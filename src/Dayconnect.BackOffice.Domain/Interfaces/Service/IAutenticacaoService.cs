@@ -9,4 +9,5 @@ public interface IAutenticacaoService
     Task<Login?> Login(string login, string senha, string ip, string deviceId, string versaoDispositivo);
     Task<SessaoResult> ObterSessao(SessaoSignature signature);
     Task<AutenticarUsuarioResult> AutenticarUsuario(AutenticarUsuarioSignature signature);
+    Task Logoff(string dayId);
 }

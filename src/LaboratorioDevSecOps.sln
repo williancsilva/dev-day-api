@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevSecOps.BackOffice.App", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevSecOps.BackOffice.Mediator", "Dayconnect.BackOffice.Mediator\DevSecOps.BackOffice.Mediator.csproj", "{693A2EFE-CC4F-4BB2-B766-0F446C5666AB}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DevSecOps.BackOffice.DCV_DEVDAY", "DevSecOps.BackOffice.DCV_DEVDAY\DevSecOps.BackOffice.DCV_DEVDAY.sqlproj", "{BE0BBECE-4996-4707-BB0A-38DFDCA2066D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,12 @@ Global
 		{693A2EFE-CC4F-4BB2-B766-0F446C5666AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{693A2EFE-CC4F-4BB2-B766-0F446C5666AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{693A2EFE-CC4F-4BB2-B766-0F446C5666AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0BBECE-4996-4707-BB0A-38DFDCA2066D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0BBECE-4996-4707-BB0A-38DFDCA2066D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0BBECE-4996-4707-BB0A-38DFDCA2066D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BE0BBECE-4996-4707-BB0A-38DFDCA2066D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0BBECE-4996-4707-BB0A-38DFDCA2066D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0BBECE-4996-4707-BB0A-38DFDCA2066D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

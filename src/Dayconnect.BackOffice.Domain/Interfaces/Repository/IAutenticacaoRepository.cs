@@ -6,6 +6,6 @@ namespace DevSecOps.BackOffice.Domain.Interfaces.Repository
     {
         Task<int> CriarSessao(string email);
         Task<SessaoResult> ObterSessao(int dayId);
-        Task AtualizarSessao(int dayId);
+        Task AtualizarSessao(int dayId, bool isAuthenticated);
     }
 }

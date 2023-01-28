@@ -3,6 +3,7 @@ using DevSecOps.backoffice.App.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
+using System.Security.Cryptography.Xml;
 
 namespace DevSecOps.backoffice.Controllers;
 
@@ -20,11 +21,11 @@ public class AutenticacaoController : ControllerBase
     [HttpPost]
     [Route("Login")]
     [SwaggerOperation("Efetua o login no sistema")]
-    [ProducesResponseType((int) HttpStatusCode.OK)]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
     public async Task<IActionResult> LoginAsync([FromBody, SwaggerRequestBody("A signature para logar no sistema", Required = true)] LoginSignature signature)
     {
         signature.Ip = string.IsNullOrEmpty(HttpContext.Request.Headers["X-REAL-IP"]) ? HttpContext.Connection.RemoteIpAddress?.ToString() : HttpContext.Request.Headers["X-REAL-IP"].ToString();
-        
+
         var result = await _app.Login(signature);
 
         if (result != null)
@@ -32,4 +33,14 @@ public class AutenticacaoController : ControllerBase
 
         return BadRequest("Dados incorretos.");
     }
+
+    [HttpPost]
+    [Route("Logoff")]
+    [SwaggerOperation("Efetua o logoff no sistema")]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    public async Task<IActionResult> LogoffAsync()
+    {
+        return Ok();
+    }
 }
+

@@ -6,4 +6,5 @@ namespace DevSecOps.backoffice.App.Interfaces;
 public interface IAutenticacaoApp
 {
     public Task<LoginResult> Login(LoginSignature signature);
+    public Task Logoff(string id);
 }

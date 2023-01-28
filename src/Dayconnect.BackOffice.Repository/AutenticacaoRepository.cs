@@ -50,7 +50,7 @@ public class AutenticacaoRepository : IAutenticacaoRepository
         }
     }
 
-    public async Task AtualizarSessao(int dayId)
+    public async Task AtualizarSessao(int dayId, bool isAuthenticated )
     {
         using (SqlConnection con = new SqlConnection(connString))
         {
@@ -58,10 +58,13 @@ public class AutenticacaoRepository : IAutenticacaoRepository
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@DayId", SqlDbType.Int).Value = dayId;
+                cmd.Parameters.Add("@isAuthenticated", SqlDbType.VarChar).Value = isAuthenticated;
 
                 await con.OpenAsync();
                 await cmd.ExecuteNonQueryAsync();
             }
         }
     }
+
+   
 }

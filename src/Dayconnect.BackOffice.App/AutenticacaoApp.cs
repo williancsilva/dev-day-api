@@ -5,6 +5,7 @@ using DevSecOps.backoffice.App.Dto.Signature;
 using DevSecOps.backoffice.App.Interfaces;
 using DevSecOps.backoffice.App.Notifications;
 using DevSecOps.backoffice.Domain.Interfaces.Service;
+using Microsoft.Extensions.Primitives;
 
 namespace DevSecOps.backoffice.App;
 
@@ -24,5 +25,10 @@ public class AutenticacaoApp : ApplicationBase, IAutenticacaoApp
 
         var result = await _service.Login(signature.Login, signature.Password, signature.Ip, signature.DeviceId, signature.VersaoDispositivo);
         return result.Convert();
+    }
+
+    public async Task Logoff(string dayId)
+    {
+        await _service.Logoff(dayId);
     }
 }

@@ -36,10 +36,15 @@ public class AutenticacaoService : IAutenticacaoService
         if (sessao != null && sessao.Senha == signature.Senha)
         {
             autenticacaoUsuario.AutenticarUsuario(sessao);
-            await _repository.AtualizarSessao(signature.SessionId);
+            await _repository.AtualizarSessao(signature.SessionId, true);
 
         }
 
         return autenticacaoUsuario;
+    }
+
+    public async Task Logoff(string dayId)
+    {
+        await _repository.AtualizarSessao(int.Parse(dayId), false);
     }
 }

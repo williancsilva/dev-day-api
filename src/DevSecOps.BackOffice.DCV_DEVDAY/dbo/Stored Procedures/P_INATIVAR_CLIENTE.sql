@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE P_INATIVAR_CLIENTE @documento VARCHAR(255)
+AS
+BEGIN
+UPDATE CLIENTES SET ativo = 0 WHERE documento = @documento 
+END
