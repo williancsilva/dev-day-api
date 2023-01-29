@@ -8,7 +8,7 @@ public class SessaoResult
     {
 
     }
-    public SessaoResult(int id, bool isAuthenticated, string serializedObject, Permission permission, string login, DateTime dataExpiracao, string senha)
+    public SessaoResult(int id, bool isAuthenticated, string serializedObject, Permission permission, string login, DateTime dataExpiracao, string senha, string salt)
     {
         Id = id;
         IsAuthenticated = isAuthenticated;
@@ -17,6 +17,8 @@ public class SessaoResult
         Login = login;
         DataExpiracao = dataExpiracao;
         Senha = senha;
+        Salt = salt;
+
     }
 
     public int Id { get; set; }
@@ -26,6 +28,7 @@ public class SessaoResult
     public string Login { get; set; }
     public DateTime DataExpiracao { get; set; }
     public string Senha { get; set; }
+    public string Salt { get; set; }
 }
 
 public class Permission

@@ -1,4 +1,5 @@
-﻿INSERT INTO [dbo].[UsuariosClientes] ([id_usuario], [id_cliente]) VALUES (1, 24)
+﻿use DCV_DEVDAY
+INSERT INTO [dbo].[UsuariosClientes] ([id_usuario], [id_cliente]) VALUES (1, 24)
 INSERT INTO [dbo].[UsuariosClientes] ([id_usuario], [id_cliente]) VALUES (1, 25)
 INSERT INTO [dbo].[UsuariosClientes] ([id_usuario], [id_cliente]) VALUES (1, 27)
 INSERT INTO [dbo].[UsuariosClientes] ([id_usuario], [id_cliente]) VALUES (3, 28)

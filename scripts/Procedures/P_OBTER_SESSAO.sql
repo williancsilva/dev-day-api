@@ -9,6 +9,7 @@ SELECT
 	,STRING_AGG(Features, ',') Features
 	,Roles
 	,Senha
+	,salt
 FROM Sessao S
 JOIN Permissoes P ON P.SessaoId = S.Id
 JOIN Usuarios U ON U.email = s.login
@@ -20,7 +21,7 @@ GROUP BY
 	,Expiracao
 	,Roles
 	,Senha
-
+	,salt
 END
 GO
 

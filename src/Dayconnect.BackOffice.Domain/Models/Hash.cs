@@ -5,27 +5,16 @@ namespace DevSecOps.BackOffice.Domain.Models
 {
     public class Hash
     {
-        const int keySize = 64;
-        const int iterations = 350000;
-        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
-
-        string HashPasword(string password, out byte[] salt)
+        public string HashPassword(string password)
         {
-            salt = RandomNumberGenerator.GetBytes(keySize);
+            SHA256 hash = SHA256.Create();
 
-            var hash = Rfc2898DeriveBytes.Pbkdf2(
-                Encoding.UTF8.GetBytes(password),
-                salt,
-                iterations,
-                hashAlgorithm,
-                keySize);
-            return Convert.ToHexString(hash);
-        }
+            var passwordBytes = Encoding.Default.GetBytes(password);
 
-        bool VerifyPassword(string password, string hash, byte[] salt)
-        {
-            var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, hashAlgorithm, keySize);
-            return hashToCompare.SequenceEqual(Convert.FromHexString(hash));
+            var hashedpassword = hash.ComputeHash(passwordBytes);
+
+            return Convert.ToHexString(hashedpassword);
+
         }
     }
 }

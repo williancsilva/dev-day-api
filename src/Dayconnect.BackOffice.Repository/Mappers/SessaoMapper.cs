@@ -14,6 +14,7 @@ public static class SessaoMapper
         var login = dReader["login"] as string;
         var dataExpiracao = (DateTime)dReader["Expiracao"];
         var senha = dReader["senha"] as string;
+        var salt = dReader["salt"] as string;
 
         var role = dReader["roles"] as string;
         string[] roles = { role ?? "" };
@@ -24,6 +25,6 @@ public static class SessaoMapper
 
         var permissoes = new Permission(features, roles);
 
-        return new SessaoResult(id, isAuthenticated, "", permissoes, login, dataExpiracao, senha);
+        return new SessaoResult(id, isAuthenticated, "", permissoes, login, dataExpiracao, senha, salt);
     }
 }
