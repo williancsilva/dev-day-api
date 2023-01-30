@@ -38,6 +38,7 @@ public class ClienteController : ControllerBase
     public async Task<IActionResult> BloquearCliente(
         [FromBody, SwaggerRequestBody("A signature para bloquear o cliente", Required = true)] InativarClienteSignature signature)
     {
+        signature.DayId = Convert.ToInt32(HttpContext.Request.Headers["DayID"].ToString());
         await _app.InativarCliente(signature);
         return Ok("Cliente bloqueado com sucesso!");
     }
@@ -49,6 +50,7 @@ public class ClienteController : ControllerBase
     public async Task<IActionResult> ExcluirCliente(
         [FromBody, SwaggerRequestBody("A signature para excluir o cliente", Required = true)] ExcluirClienteSignature signature)
     {
+        signature.DayId = Convert.ToInt32(HttpContext.Request.Headers["DayID"].ToString());
         await _app.ExcluirCliente(signature);
         return Ok("Cliente excluído com sucesso!");
     }
