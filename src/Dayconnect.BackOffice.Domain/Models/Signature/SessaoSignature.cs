@@ -2,21 +2,21 @@
 
 public class SessaoSignature
 {
-    public int SessionId { get; }
+    public int DayId { get; }
     public int Expiration { get; }
     public bool IsValid { get; private set; }
 
-    public SessaoSignature(int sessionId)
+    public SessaoSignature(int dayId)
     {
-        SessionId = sessionId;
+        DayId = dayId;
         Expiration = 20;
         Validar();
     }
 
     private void Validar()
     {
-        if (SessionId <= 0)
-            throw new ArgumentNullException(SessionId.ToString(),"SessionId obrigatório");
+        if (DayId <= 0)
+            throw new ArgumentNullException(DayId.ToString(),"SessionId obrigatório");
 
         IsValid = true;
     }

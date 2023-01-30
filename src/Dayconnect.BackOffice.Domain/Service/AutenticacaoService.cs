@@ -18,20 +18,20 @@ public class AutenticacaoService : IAutenticacaoService
 
     public async Task<Login?> Login(string login, string senha, string ip, string deviceId, string versaoDispositivo)
     {
-        var sessionId = await _repository.CriarSessao(login);
-        var result = await AutenticarUsuario(new AutenticarUsuarioSignature(sessionId, login, senha));
+        var dayId = await _repository.CriarSessao(login);
+        var result = await AutenticarUsuario(new AutenticarUsuarioSignature(dayId, login, senha));
 
-        return new Login(sessionId, result?.Autenticado, true, result?.Permissoes, result.Senha);
+        return new Login(dayId, result?.Autenticado, true, result?.Permissoes, result.Senha);
     }
 
     public async Task<SessaoResult> ObterSessao(SessaoSignature signature)
     {
-        return await _repository.ObterSessao(signature.SessionId);
+        return await _repository.ObterSessao(signature.DayId);
     }
 
     public async Task<AutenticarUsuarioResult> AutenticarUsuario(AutenticarUsuarioSignature signature)
     {
-        var sessao = await _repository.ObterSessao(signature.SessionId);
+        var sessao = await _repository.ObterSessao(signature.DayId);
         var autenticacaoUsuario = new AutenticarUsuarioResult();
 
         var hash = new Hash();
@@ -40,7 +40,7 @@ public class AutenticacaoService : IAutenticacaoService
         if (sessao != null && senhaCripto == sessao.Senha)
         {
             autenticacaoUsuario.AutenticarUsuario(sessao);
-            await _repository.AtualizarSessao(signature.SessionId, true);
+            await _repository.AtualizarSessao(signature.DayId, true);
 
         }
 

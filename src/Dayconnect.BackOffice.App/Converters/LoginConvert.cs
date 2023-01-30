@@ -11,7 +11,7 @@ public static class LoginConvert
 
         return new LoginResult
         {
-            DayId = result.Id,
+            DayId = result.DayId,
             Logado = result.Logado,
             Permissoes = result.Permissoes,
             Senha = result.Senha

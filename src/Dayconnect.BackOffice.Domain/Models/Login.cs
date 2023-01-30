@@ -4,7 +4,7 @@ namespace DevSecOps.backoffice.Domain.Models;
 
 public class Login
 {
-    public int Id { get; }
+    public int DayId { get; }
     public bool? Autenticado { get; }
     public bool? Habilitado { get; }
     public string Senha { get; set; }
@@ -12,9 +12,9 @@ public class Login
     public bool IsValid { get; private set; }
     public Permission Permissoes { get; set; }
 
-    public Login(int id, bool? autenticado, bool? habilitado, Permission? permissoes, string senha)
+    public Login(int dayId, bool? autenticado, bool? habilitado, Permission? permissoes, string senha)
     {
-        Id = id;
+        DayId = dayId;
         Autenticado = autenticado;
         Habilitado = habilitado;
         Validar();
@@ -24,8 +24,8 @@ public class Login
 
     private void Validar()
     {
-        if (Id <= 0)
-            throw new ArgumentNullException(Id.ToString(), "Id obrigatório");
+        if (DayId <= 0)
+            throw new ArgumentNullException(DayId.ToString(), "Id obrigatório");
 
         IsValid = true;
     }

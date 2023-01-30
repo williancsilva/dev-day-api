@@ -81,6 +81,8 @@
     <Build Include="dbo\Stored Procedures\P_OBTER_SESSAO.sql" />
     <Build Include="dbo\Stored Procedures\P_ATUALIZAR_SESSAO.sql" />
     <None Include="dbo\Script\DML.dbo.Feature.data.sql" />
+    <Build Include="dbo\Stored Procedures\P_ATIVAR_CLIENTE.sql" />
+    <Build Include="dbo\Stored Procedures\P_VERIFICAR_USUARIO_CLIENTE.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\Script\DML.dbo.UsuariosClientes.data.sql" />

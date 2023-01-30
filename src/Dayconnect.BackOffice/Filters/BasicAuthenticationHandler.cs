@@ -37,8 +37,8 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
 
         try
         {
-            Request.Headers.TryGetValue("dayId", out var sessionId);
-            result = await _autenticacaoService.ObterSessao(new SessaoSignature(Convert.ToInt32(sessionId)));
+            Request.Headers.TryGetValue("dayId", out var dayId);
+            result = await _autenticacaoService.ObterSessao(new SessaoSignature(Convert.ToInt32(dayId)));
         }
         catch
         {
@@ -52,7 +52,7 @@ public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSc
 
         var claimsUser = new List<Claim>
         {
-            new(ClaimTypes.NameIdentifier, result.Id.ToString() ?? string.Empty)
+            new(ClaimTypes.NameIdentifier, result.DayId.ToString() ?? string.Empty)
         };
 
         if (result.Permission.Features != null)

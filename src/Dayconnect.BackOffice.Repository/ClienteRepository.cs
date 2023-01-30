@@ -62,4 +62,38 @@ public class ClienteRepository : IClienteRepository
             }
         }
     }
+
+    public async Task AtivarCliente(string cpfCnpj)
+    {
+        using (SqlConnection con = new SqlConnection(connString))
+        {
+            using (SqlCommand cmd = new SqlCommand("P_ATIVAR_CLIENTE", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@documento", SqlDbType.VarChar, 11).Value = cpfCnpj;
+
+                await con.OpenAsync();
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
+    }
+
+    public async Task<bool> PossuiAcessoAoCliente(string cpfCnpj, int dayId)
+    {
+        using (SqlConnection con = new SqlConnection(connString))
+        {
+            using (SqlCommand cmd = new SqlCommand("P_VERIFICAR_USUARIO_CLIENTE", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@documento", SqlDbType.VarChar, 11).Value = cpfCnpj;
+                cmd.Parameters.Add("@DayId", SqlDbType.Int).Value = dayId;
+                cmd.Parameters.Add("@result", SqlDbType.Bit).Direction = ParameterDirection.Output;
+
+                await con.OpenAsync();
+                await cmd.ExecuteNonQueryAsync();
+                var result = (bool)cmd.Parameters["@result"].Value;
+                return result;
+            }
+        }
+    }
 }

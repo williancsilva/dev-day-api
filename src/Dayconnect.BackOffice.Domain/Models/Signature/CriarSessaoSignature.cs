@@ -4,7 +4,7 @@ public class CriarSessaoSignature
 {
     public int CodSistema => 439;
     public int CodTipoDispositivo => 1;
-    public int Expiration => 20;
+    public int Expiration => 999;
     public string Login { get; }
     public string IpUsuario { get; }
     public string DeviceId { get; }

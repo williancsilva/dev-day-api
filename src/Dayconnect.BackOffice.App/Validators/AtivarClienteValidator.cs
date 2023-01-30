@@ -4,13 +4,10 @@ using FluentValidation;
 
 namespace DevSecOps.backoffice.App.Validators;
 
-public class InativarClienteValidator : AbstractValidator<InativarClienteSignature>
+public class AtivarClienteValidator : AbstractValidator<AtivarClienteSignature>
 {
-    public InativarClienteValidator()
+    public AtivarClienteValidator()
     {
         RuleFor(x => x.CpfCnpj).Must(DocumentoValidator.ValidarDocumento).WithMessage("Documento Inválido");
     }
-
-    
-
 }

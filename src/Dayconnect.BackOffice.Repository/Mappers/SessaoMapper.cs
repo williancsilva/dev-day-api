@@ -9,7 +9,7 @@ public static class SessaoMapper
 {
     public static SessaoResult Convert(IDataReader dReader)
     {
-        var id = (int)dReader["id"];
+        var dayId = (int)dReader["id"];
         var isAuthenticated = (bool)dReader["isAuthenticated"];
         var login = dReader["login"] as string;
         var dataExpiracao = (DateTime)dReader["Expiracao"];
@@ -25,6 +25,6 @@ public static class SessaoMapper
 
         var permissoes = new Permission(features, roles);
 
-        return new SessaoResult(id, isAuthenticated, "", permissoes, login, dataExpiracao, senha, salt);
+        return new SessaoResult(dayId, isAuthenticated, "", permissoes, login, dataExpiracao, senha, salt);
     }
 }

@@ -52,4 +52,17 @@ public class ClienteController : ControllerBase
         await _app.ExcluirCliente(signature);
         return Ok("Cliente excluído com sucesso!");
     }
+
+    [HttpPost]
+    [Route(nameof(AtivarCliente))]
+    [SwaggerOperation("Ativa o cliente")]
+    [ProducesResponseType((int)HttpStatusCode.OK)]
+    [Authorize(Roles = "Ativar")]
+    public async Task<IActionResult> AtivarCliente(
+      [FromBody, SwaggerRequestBody("A signature para Ativar o cliente", Required = true)] AtivarClienteSignature signature)
+    {
+        signature.DayId =  Convert.ToInt32(HttpContext.Request.Headers["DayID"].ToString());
+        await _app.AtivarCliente(signature);
+        return Ok("Cliente Ativado com sucesso!");
+    }
 }

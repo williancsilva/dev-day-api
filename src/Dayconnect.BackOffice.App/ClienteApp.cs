@@ -29,6 +29,22 @@ public class ClienteApp : ApplicationBase, IClienteApp
     {
         await _repository.ExcluirCliente(signature.CpfCnpj);
     }
+    public async Task AtivarCliente(AtivarClienteSignature signature)
+    {
+        if (!DtoValido(signature))
+            return;
+        var possuiAcessoAoCliente = await PossuiAcessoAoCliente(signature.CpfCnpj, signature.DayId);
+        if (!possuiAcessoAoCliente)
+            return; 
+
+        await _repository.AtivarCliente(signature.CpfCnpj);
+    }
+
+    public async Task<bool> PossuiAcessoAoCliente(string cpfCnpj, int dayId)
+    {
+         return await _repository.PossuiAcessoAoCliente(cpfCnpj, dayId);
+    }
+
 
     public async Task<IEnumerable<ObterDadosClienteResult>> ObterDadosCliente(ObterDadosClienteSignature signature)
     {
